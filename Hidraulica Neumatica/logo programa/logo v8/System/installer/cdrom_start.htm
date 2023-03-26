@@ -1,0 +1,487 @@
+<html>
+
+    <head>
+        <meta http-equiv="content-type"
+content="text/html;charset=iso-8859-1">
+        <meta name="Description" content="InstallAnywhere Web
+Installer by Zero G Software">
+        <meta name="keywords" content="installanywhere,
+installanywhere web installer, web installer">
+        <meta name="generator" content="InstallAnywhere 2010">
+        <meta name="creationdatetime" content="08.05.2003">
+
+        <title>LOGO\!Soft Comfort V8.1 V8.1 </title>
+
+        <script><!--
+function whatPlatform()
+{
+
+    plat="other"
+
+    thisAgent = navigator.userAgent.toLowerCase()
+
+    // the order of the names is important, since these are not nested ifs
+
+    if (thisAgent.indexOf("win") != -1)
+    {
+        plat="win"
+    }
+    if (thisAgent.indexOf("95") != -1)
+    {
+        plat="win"
+    }
+    if (thisAgent.indexOf("98") != -1)
+    {
+        plat="win"
+    }
+    if (thisAgent.indexOf("nt") != -1)
+    {
+        plat="win"
+    }
+    if (plat=="win") {
+    	if (thisAgent.indexOf("wow64") != -1 || thisAgent.indexOf("win64") != -1) {
+    		plat="win64";
+    	}
+    }
+
+    if (thisAgent.indexOf("mac") != -1)
+    {
+        plat="mac"
+        var MacOSXPlugIn = navigator.plugins["Default Plugin Carbon.cfm"];
+        if (MacOSXPlugIn || thisAgent.indexOf("omniweb") != -1 )
+        {
+            //Change value to true to enable the applet for Mac OS X
+            //This variable has been introduced to this page as the support for
+            //applets on Mac OS X has been questionable.
+            enableAppletForMacOSX = true
+            plat="macosx"
+        }
+    }
+
+    if (thisAgent.indexOf("sun") != -1)
+    {
+        plat="solaris"
+    }
+    if (thisAgent.indexOf("solaris") != -1)
+    {
+        plat="solaris"
+    }
+    if (thisAgent.indexOf("aix") != -1)
+    {
+        plat="aix"
+    }
+    if (thisAgent.indexOf("ibm") != -1)
+    {
+        plat="aix"
+    }
+    if (thisAgent.indexOf("dec") != -1)
+    {
+        plat="digitalunix"
+    }
+    if (thisAgent.indexOf("osf") != -1)
+    {
+        plat="digitalunix"
+    }
+
+    if (thisAgent.indexOf("digital") != -1)
+    {
+        plat="digitalunix"
+    }
+    if (thisAgent.indexOf("hp") != -1)
+    {
+        plat="hpux"
+    }
+    if (thisAgent.indexOf("unix") != -1)
+    {
+        plat="unix"
+    }
+    if (thisAgent.indexOf("sco") != -1)
+    {
+        plat="sco"
+    }
+    if (thisAgent.indexOf("bsd") != -1)
+    {
+        plat="bsd"
+    }
+    if (thisAgent.indexOf("free") != -1)
+    {
+        plat="freebsd"
+    }
+    if (thisAgent.indexOf("open") != -1)
+    {
+        plat="openbsd"
+    }
+    if (thisAgent.indexOf("netbsd") != -1)
+    {
+        plat="netbsd"
+    }
+    if (thisAgent.indexOf("linux") != -1)
+    {
+        plat="linux"
+    }
+    if (thisAgent.indexOf("reliant") != -1)
+    {
+        plat="reliant"
+    }
+
+    if (thisAgent.indexOf("sgi") != -1)
+    {
+        plat="irix"
+    }
+    if (thisAgent.indexOf("silicon") != -1)
+    {
+        plat="irix"
+    }
+    if (thisAgent.indexOf("irix") != -1)
+    {
+        plat="irix"
+    }
+    if (thisAgent.indexOf("os/390") != -1)
+    {
+        plat="os390"
+    }
+
+
+    // now determine what platforms are available, and reset the chosen platform based on whether the platform is available
+    // if you want the user to get a message that the desired platform is NOT available, set the fallback "plat" to "notavailable"
+    // the order is important, as it indicated the fallback order
+    // every platform above, must have a fall back below
+
+    platAvail="notavailable"
+
+
+    platAvail="win"
+
+    if ((plat=="win" || plat=="win64") && (platAvail!="win"))
+    {
+        plat="other"
+    }
+
+
+    platAvail="macosx"
+
+    if ((plat=="macosx") && (platAvail!="macosx"))
+    {
+        plat="unix"
+    }
+
+
+    if ((plat=="mac") && (platAvail!="mac"))
+    {
+        plat="other"
+    }
+
+
+    if ((plat=="solaris") && (platAvail!="solaris"))
+    {
+        plat="unix"
+    }
+
+
+    if ((plat=="aix") && (platAvail!="aix"))
+    {
+        plat="unix"
+    }
+
+
+    if ((plat=="digitalunix") && (platAvail!="digitalunix"))
+    {
+        plat="unix"
+    }
+
+
+    if ((plat=="hpux") && (platAvail!="hpux"))
+    {
+        plat="unix"
+    }
+
+
+    if ((plat=="sco") && (platAvail!="sco"))
+    {
+        plat="unix"
+    }
+
+
+    if ((plat=="freebsd") && (platAvail!="freebsd"))
+    {
+        plat="bsd"
+    }
+
+
+    if ((plat=="openbsd") && (platAvail!="openbsd"))
+    {
+        plat="bsd"
+    }
+
+
+    if ((plat=="netbsd") && (platAvail!="netbsd"))
+    {
+        plat="bsd"
+    }
+
+
+    if ((plat=="bsd") && (platAvail!="bsd"))
+    {
+        plat="unix"
+    }
+
+
+    platAvail="linux"
+
+    if ((plat=="linux") && (platAvail!="linux"))
+    {
+        plat="unix"
+    }
+
+
+    if ((plat=="reliant") && (platAvail!="reliant"))
+    {
+        plat="unix"
+    }
+
+
+    if ((plat=="irix") && (platAvail!="irix"))
+    {
+        plat="unix"
+    }
+
+
+    if ((plat=="os390") && (platAvail!="os390"))
+    {
+        plat="unix"
+    }
+
+
+    if ((plat=="unix") && (platAvail!="unix"))
+    {
+        plat="other"
+    }
+
+
+    if ((plat=="other") && (platAvail!="other"))
+    {
+        plat="notavailable"
+    }
+
+}
+
+
+function platformButtons()
+{
+    document.writeln("<font face=\"Arial,Helvetica,Geneva,Swiss,SunSans-Regular\" size=\"3\">")
+
+    if (plat=="win")
+    {
+        document.writeln("<b>Recommended installer for your platform...</b><br>")
+        document.write("<form method=\"get\" action=\"")
+
+        document.write("InstData/Win32/VM/Setup.exe\">")
+        //
+
+        document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (29.5M) for Windows (includes Java VM)\" >")
+        //
+        document.writeln("<br></form>")
+        document.writeln("Enable Java in your browser to install directly from the web.<br>")
+    }
+
+    if (plat=="win64")
+    {
+        document.writeln("<b>Recommended installer for your platform...</b><br>")
+        document.write("<form method=\"get\" action=\"")
+
+        document.write("InstData/Win64/VM/Setup.exe\">")
+        //
+
+        document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (29.5M) for Windows (includes Java VM)\" >")
+        //
+        document.writeln("<br></form>")
+        document.writeln("Enable Java in your browser to install directly from the web.<br>")
+    }
+
+    if (plat=="macosx")
+    {
+        document.writeln("<b>Recommended installer for your platform...</b><br>")
+        document.write("<form method=\"get\" action=\"")
+
+        document.write("InstData/MacOSX/Setup.zip\">")
+        //
+
+        document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (15.1M) for Mac OS X (without Java VM)\" ><br>")
+        //
+        if( enableAppletForMacOSX )
+        {
+            document.writeln("<br></form>")
+            document.writeln("Enable Java in your browser to install directly from the web.<br>")
+        }
+    }
+
+
+
+
+    if (plat=="linux")
+    {
+        document.writeln("<b>Recommended installer for your platform...</b><br>")
+        document.write("<form method=\"get\" action=\"")
+
+        document.write("InstData/Linux/VM/Setup.bin\">")
+        //
+
+        document.writeln("<input type=\"SUBMIT\" value=\"Download Installer (48.5M) for Linux (includes Java VM)\" ><br>")
+        //
+        document.writeln("<br></form>")
+        document.writeln("Enable Java in your browser to install directly from the web.<br>")
+    }
+
+
+
+
+
+
+
+
+
+    if (plat=="other")
+    {
+        document.writeln("<b>Recommended installer for your platform...</b><br>")
+        document.write("<form method=\"get\" action=\"")
+
+        document.write("\">")
+        //
+
+        document.writeln("<input type=\"SUBMIT\" value=\"Download Installer ()\" ><br>")
+        //
+        document.writeln("<br></form>")
+    }
+    if (plat=="notavailable")
+    {
+        document.writeln("<b>There is no installer available for your platform.<br>")
+        document.writeln("Please select an alternate platform below.</b><br>")
+    }
+
+    document.writeln("</font>")
+}
+
+function setArchiveFile()
+{
+    if (plat!="macosx" || ( plat=="macosx" && enableAppletForMacOSX ))
+    {
+        if (plat!="mac")
+        {
+            document.writeln("<applet codebase=\"InstData\" archive=\"WebInst.jar\" code=\"com.zerog.ia.download.WebInstallerApplet\" width=\"425\" height=\"85\">")
+        }
+        if (plat=="mac")
+        {
+            document.writeln("<applet codebase=\"InstData\" archive=\"WebInstMac.jar\" code=\"com.zerog.ia.download.WebInstallerApplet\" width=\"425\" height=\"85\">")
+        }
+    }
+}
+
+function displayMarker(whatPlat)
+{
+    if (whatPlat==plat)
+    {
+        document.write("<font face=\"Arial,Helvetica,Geneva,Swiss,SunSans-Regular\" color=\"green\"><b>&gt</b></font>")
+    }
+}
+
+
+function setPlatFont(whatPlat)
+{
+
+    if (whatPlat==plat)
+    {
+        document.write("<font face=\"Arial,Helvetica,Geneva,Swiss,SunSans-Regular\" color=\"green\"><b>")
+    }
+    else
+    {
+        document.write("<font face=\"Arial,Helvetica,Geneva,Swiss,SunSans-Regular\">")
+    }
+}
+
+function endPlatFont(whatPlat)
+{
+    if (whatPlat==plat)
+    {
+        document.write("</b></font>")
+    }
+    else
+    {
+        document.write("</font>")
+    }
+}
+
+whatPlatform()
+// -->
+        </script>
+
+    </head>
+
+    <body bgcolor="white">
+        <center>
+
+
+            <a name="top"></a>
+            <IMG SRC="InstData/com/zerog/ia/installer/images/Splash_cdrom.jpg" ALT="LOGO\!Soft Comfort V8.1 " height="40%" >
+            <br>
+            <p>
+
+
+<script>
+<!--
+setArchiveFile()
+// -->
+
+</script>
+
+
+                <param name="cabbase"               value="WebInst.cab">
+                <param name="SendTroubleEmailTo"    value="yourEmailAddressHere">
+                <param name="ProductName"           value="Temp">
+                <param name="NumberOfPlatforms"     value="3">
+
+
+                <param name="CustomRecommendedText_de"  value="LOGO\!Soft Comfort V8.1 ">
+                <param name="CustomDownloadButtonText_de" value="Start">
+                <param name="CustomInstallButtonText_de" value="Start">
+
+
+                <param name="CustomRecommendedText_en"  value="LOGO\!Soft Comfort V8.1 ">
+                <param name="CustomDownloadButtonText_en" value="Start">
+                <param name="CustomInstallButtonText_en" value="Start">
+
+                <param name="CustomRecommendedText_es"  value="LOGO\!Soft Comfort V8.1 ">
+                <param name="CustomDownloadButtonText_es" value="Start">
+                <param name="CustomInstallButtonText_es" value="Start">
+
+                <param name="CustomRecommendedText_fr"  value="LOGO\!Soft Comfort V8.1 ">
+                <param name="CustomDownloadButtonText_fr" value="Start">
+                <param name="CustomInstallButtonText_fr" value="Start">
+
+                <param name="CustomRecommendedText_it"  value="LOGO\!Soft Comfort V8.1 ">
+                <param name="CustomDownloadButtonText_it" value="Start">
+                <param name="CustomInstallButtonText_it" value="Start">
+
+                <param name="PlatformName1"         value="">
+                <param name="RunOnPlatformsNamed1"  value="Win">
+
+                <param name="InstallerNameVM1"      value="../cdrom_start.exe">
+                <param name="SizeInBytesVM1"        value="200000">
+
+                <param name="PlatformName7" value="" />
+                <param name="RunOnPlatformsNamed7" value="Mac os x"/>
+                <param name="InstallerNameNoVM7" value="cdrom_start.command"/>
+                <param name="SizeInBytesNoVM7" value="2000"/>
+
+                <param name="PlatformName4" value=""/>
+                <param name="IsUnix4" value="Yes"/>
+                <param name="RunOnPlatformsNamed4" value="linux"/>
+                <param name="InstallerNameVM4" value="cdrom_start.bin"/>
+                <param name="SizeInBytesVM4" value="2000"/>
+
+
+            </applet></p>
+
+            <br>
+
+</body>
+</html>

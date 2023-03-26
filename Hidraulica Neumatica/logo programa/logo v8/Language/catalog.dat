@@ -1,0 +1,13 @@
+#
+# Date: Thu Jul 14 16:43:32 CST 2016
+# Inhaltsverzeichnis der verfuegbaren Updates
+# kategorie | Name | Beschreibung | Dateiname des Updates | Classpath-Ergaenzung | relatives Zielverzeichnis | Groesse | Version ab | Version bis | Gueltig fuer Programmversion
+# A C H T U N G: Bei den Versionen und bei der Groessenangabe der Update-Files duerfen 
+#	zwischen "|" und den Ziffern keine Leerzeichen stehen!
+#
+language|Chinese V8.1|V8.1 Readme, Onlinehelp and user interface|Chinese_V8.1.luf|-|.|9955559|8.1.0|8.1.0|-9|all|LOGOComfort
+language|English V8.1|V8.1 Readme, Onlinehelp and user interface|english_V8.1.luf|-|.|10161767|8.1.0|8.1.0|-9|all|LOGOComfort
+language|Francais V8.1|V8.1 Readme, Onlinehelp and user interface|french_V8.1.luf|-|.|11093246|8.1.0|8.1.0|-9|all|LOGOComfort
+language|Deutsch V8.1|V8.1 Liesmich, Onlinehilfe und Bedienoberfläche|german_V8.1.luf|-|.|11032540|8.1.0|8.1.0|-9|all|LOGOComfort
+language|Italiano V8.1|V8.1 Readme, Onlinehelp and user interface|italian_V8.1.luf|-|.|10994701|8.1.0|8.1.0|-9|all|LOGOComfort
+language|Espanol V8.1|V8.1 Readme, Onlinehelp and user interface|spanish_V8.1.luf|-|.|11108218|8.1.0|8.1.0|-9|all|LOGOComfort

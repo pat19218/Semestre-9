@@ -1,0 +1,43 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+<script type="text/javascript">
+// Diese JavaScript-Funktion darf nicht in HTML-Kommentaren eingeschlossen sein
+
+function setLocations()
+{
+    var urltext = parent.location.search;                       //get all param
+    var InfoPosition = urltext.search(/INFO=.+/);               //position of second param (InfoTextFileName)
+    if (InfoPosition == -1) InfoPosition=150;
+
+//  alert(InfoPosition);
+
+    var MainPath = "../" + urltext.substr(5, InfoPosition-5);   //extract Path to MainFrame
+//  alert(MainPath);
+    parent.FWmain.location.href = MainPath;
+
+    var InfoText = "../info/" + urltext.substr(InfoPosition+5, 1500) + ".htm";      //extract InfoTextFileName
+//  alert(InfoText);
+    parent.FWtop.location.href = InfoText;
+
+}
+
+if(navigator.appName=="Konqueror"){
+           window.setTimeout("setLocations()",500);             // Delay if browser is Konqueror
+}
+else
+{
+           setLocations();                                       // No delay if other browswers
+}
+
+
+</script>
+
+</head>
+
+<body marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" bgcolor="#003399">
+
+</body>
+
+</html>

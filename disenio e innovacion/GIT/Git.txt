@@ -1,0 +1,2 @@
+pat19218@uvg.edu.gt
+git clone https://CrisPat@bitbucket.org/parte1/uvgie303020221.git

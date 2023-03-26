@@ -1,0 +1,83 @@
+% MotionGenesis file:  BioPropulsor.txt
+%--------------------------------------------------------------------
+%       Physical objects.
+NewtonianFrame  N
+RigidBody       A, B, C, E
+Point           BC(B), CB(C)
+%--------------------------------------------------------------------
+%       Mathematical declarations.
+Constant   LA = 1 m,  LB = 4 m,  LC = 2.5 m,  LN = 3 m, LD = 2.6 m
+Constant   LE = 3 m,  WE = 3 m
+Constant   g = 9.81 m/s^2          % Gravity
+Specified  tau = 10                % Input torque
+Specified  Kdrag = 5               % Drag force constant 0.5*rho*Cd*A
+Variable   qA'', qB'', qC'', qE''  % Angles
+SetGeneralizedSpeed( qA', qE' ) 
+%--------------------------------------------------------------------
+A.SetMassInertia( mA = 1 kg,  0,  IA = mA*LA^2/12,  IA  )
+B.SetMassInertia( mB = 1 kg,  0,  IB = mB*LB^2/12,  IB  )
+C.SetMassInertia( mC = 1.5 kg,  0,  IC = mC*(LC+LD)^2/12,  IC  )
+E.SetMassInertia( mE = 0.5 kg,  0,  IE = mE*LE^2/3,   IE)
+%--------------------------------------------------------------------
+%       Rotational kinematics
+A.RotateZ( N, qA )
+B.RotateZ( N, qB )
+C.RotateZ( N, qC )
+E.RotateZ( C, qE )
+%--------------------------------------------------------------------
+%       Translational kinematics
+Ao.Translate(   No,          0> )
+Acm.Translate(  Ao,  0.5*LA*Ax> )
+Bo.Translate(   Ao,      LA*Ax> )
+Bcm.Translate(  Bo,  0.5*LB*Bx> )
+BC.Translate(   Bo,      LB*Bx> )
+Co.Translate(   No,      LN*Ny> )
+Ccm.Translate(  Co,  0.5*(LC+LD)*Cx> )
+CB.Translate(   Co,      LC*Cx> )
+Eo.Translate(   No,  LN*Ny>+(LC+LD)*Cx> )
+Ecm.Translate(  Eo,  0.5*LE*Ex> )
+%--------------------------------------------------------------------
+% Forces and Torques
+A.AddTorque( tau*Nz> )
+E.AddTorqueDamper( C, Kdrag*abs(qE') )
+
+%E.AddTorque( 10*qE'*Nz> )
+%E.AddTorqueDamper( C, 5*abs(qE') )
+%E.AddTorqueDamper( C, 10 )
+%--------------------------------------------------------------------
+%       Configuration constraints and time-derivatives 
+Loop> = LA*Ax> + LB*Bx> - LC*Cx> - LN*Ny> 
+Loop[1] = Dot( Loop>, Nx> )
+Loop[2] = Dot( Loop>, Ny> )
+%--------------------------------------------------------------------
+%       Solve constraints with given constants and initial value of qA.
+%Input  qA = pi/6,  qA' = 0
+%SolveSetInputDt( Loop,  qB = pi/6,  qC = pi/9) 
+Input  qA = 0 rad,  qA' = 0 rad/sec
+SolveSetInputDt( Loop,  qB = 1.2175 rad,  qC = 0.3059 rad) 
+%--------------------------------------------------------------------
+%       Equations of motion - with Kane's method.
+%Zero = System.GetDynamicsKane()
+%Solve( Zero, qA'' )
+
+Dynamics = System.GetDynamicsKane()
+Solve(Dynamics, qA'', qE'')
+
+TForcex = Dot(  Nx>,   A.GetDynamics()  )
+TForcey = Dot(  Ny>,   A.GetDynamics()  )
+TotForce = sqrt(TForcex^2 + TForcey^2)
+AngForce = atan(TForcey/TForcex)
+
+%--------------------------------------------------------------------
+%       Integration parameters and quantities to be output from ODE. 
+Input  tFinal = 20 sec,  tStep = 0.02 sec,  absError = 1.0E-07
+Input  qE = 0 rad, qE' = 0 rad/sec
+OutputPlot  t, qA, qA'
+OutputPlot  t, qB, qC
+OutputPlot  t, qE, qE'
+OutputPlot  t, TotForce, AngForce
+%OutputPlot  t, TForcex, TForcey
+%OutputPlot  t, qB, qB'
+%OutputPlot  t, qC, qC'
+ODE() BioPropulsor.m
+Quit

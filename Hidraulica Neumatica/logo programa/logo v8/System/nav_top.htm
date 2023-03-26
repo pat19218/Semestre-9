@@ -1,0 +1,204 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+<style type="text/css">
+<!--
+
+	a:link {
+	color:#FFFFFF;
+	text-decoration:none;
+	font-size:8pt;
+	}
+
+	a:visited {
+	color:#FFFFFF;
+	text-decoration:none;
+	font-size:8pt;
+	}
+
+	a:active {
+	color:#99FF33;
+	text-decoration:none;
+	font-size:8pt;
+	}
+
+	a:hover {
+	color:#99FF33;
+	text-decoration:underline;
+	font-size:8pt;
+    }
+
+	font {
+	font-size:8pt;
+	white-space:nowarp;
+	}
+
+-->
+</style>
+<base target="RNavi">
+</head>
+<body alink="#99FF33" vlink="#FFFFFF" link="#FFFFFF" bgcolor="#003399" leftmargin="0" topmargin="0" marginheight="0" marginwidth="0">
+<table height="81" cellspacing="0" cellpadding="0" width="640" border="0">
+<tr>
+<td height="34" width="20"></td><td height="34" width="600"><img src="images/logo.gif" border="0"></td>
+</tr>
+<tr>
+<td height="34" width="20"></td><td height="34" width="600"><font size="2" color="#FFFFFF">
+<space></space>
+</font><font size="1" color="#FFFFFF" face="Arial"><A id="de_DE" name="language_objects" href="nav_left_de_DE.htm" onClick="Reset_MainFrame_OnClick('de_DE');">Deutsch</A> | <A id="en_US" name="language_objects" href="nav_left_en_US.htm" onClick="Reset_MainFrame_OnClick('en_US');">English</A> | <A id="es_ES" name="language_objects" href="nav_left_es_ES.htm" onClick="Reset_MainFrame_OnClick('es_ES');">Espa&ntilde;ol</A> | <A id="fr_FR" name="language_objects" href="nav_left_fr_FR.htm" onClick="Reset_MainFrame_OnClick('fr_FR');">Fran&ccedil;ais</A> | <A id="it_IT" name="language_objects" href="nav_left_it_IT.htm" onClick="Reset_MainFrame_OnClick('it_IT');">Italiano</A> | <A id="zh_CN" name="language_objects" href="nav_left_zh_CN.htm" onClick="Reset_MainFrame_OnClick('zh_CN');">中文</A></font></td>
+</tr>
+</table>
+</body>
+<script type="text/javascript">
+<!--
+
+	function Reset_MainFrame_OnClick(languagevalue) {
+	  parent.RMain.location.href = "main.htm";
+	  SwitchSite(languagevalue);
+	}
+
+
+	function SwitchSite(languagevalue) {
+
+
+				
+   			
+     			  if (languagevalue=="de_DE") {
+				  parent.RNavi.location.href = "nav_left_de_DE.htm";
+				  document.all.de_DE.style.color= "#99FF33";
+				  
+				  }
+				  else {
+    			  document.all.de_DE.style.color= "#FFFFFF";
+    			  
+    			  }
+    			  
+			
+   			
+     			  if (languagevalue=="en_US") {
+				  parent.RNavi.location.href = "nav_left_en_US.htm";
+				  document.all.en_US.style.color= "#99FF33";
+				  
+				  }
+				  else {
+    			  document.all.en_US.style.color= "#FFFFFF";
+    			  
+    			  }
+    			  
+			
+   			
+     			  if (languagevalue=="es_ES") {
+				  parent.RNavi.location.href = "nav_left_es_ES.htm";
+				  document.all.es_ES.style.color= "#99FF33";
+				  
+				  }
+				  else {
+    			  document.all.es_ES.style.color= "#FFFFFF";
+    			  
+    			  }
+    			  
+			
+   			
+     			  if (languagevalue=="fr_FR") {
+				  parent.RNavi.location.href = "nav_left_fr_FR.htm";
+				  document.all.fr_FR.style.color= "#99FF33";
+				  
+				  }
+				  else {
+    			  document.all.fr_FR.style.color= "#FFFFFF";
+    			  
+    			  }
+    			  
+			
+   			
+     			  if (languagevalue=="it_IT") {
+				  parent.RNavi.location.href = "nav_left_it_IT.htm";
+				  document.all.it_IT.style.color= "#99FF33";
+				  
+				  }
+				  else {
+    			  document.all.it_IT.style.color= "#FFFFFF";
+    			  
+    			  }
+    			  
+			
+   			
+     			  if (languagevalue=="zh_CN") {
+				  parent.RNavi.location.href = "nav_left_zh_CN.htm";
+				  document.all.zh_CN.style.color= "#99FF33";
+				  
+				  }
+				  else {
+    			  document.all.zh_CN.style.color= "#FFFFFF";
+    			  
+    			  }
+    			  
+				
+
+	}
+
+
+
+	 var sLangauge = ""; 
+
+	 if(navigator.appName=="Microsoft Internet Explorer") 
+	 {
+	 	   // Internet Explorer
+		   sLangauge = navigator.userLanguage;
+	 }
+	 else  
+	 {
+	       if(navigator.appName=="Netscape" || navigator.appName=="Konqueror")
+	       {
+	               // Netscape, Konqueror
+		    	   sLangauge = navigator.language;
+		   }
+		   else
+		   {
+		   		   // Others
+				   sLangauge = navigator.userLanguage;
+		   }
+	 }		   
+		
+	
+		
+		
+		//Sprach-Id-Konvertierung
+		switch(sLangauge) {
+		 case "de":
+		 	sLangauge = "de_DE";
+		 break;
+		 case "en":
+		 	sLangauge = "en_US";
+		 break;
+		 case "es":
+		 	sLangauge = "es_ES";
+		 break;
+		 case "fr":
+		 	sLangauge = "fr_FR";
+		 break;
+		 case "it":
+		 	sLangauge = "it_IT";
+		 break;
+		 case "zh":
+		 	sLangauge = "zh_CN";
+		 break;
+		 
+		 default:
+		 	sLangauge = "en_US";
+		 break;
+		}
+		
+	// set systemlanguage on start
+	// delayed 
+    if(navigator.appName=="Konqueror") {
+    setTimeout("SwitchSite(sLangauge);", 500);
+    } else {
+    SwitchSite(sLangauge);
+    }
+
+	
+	//--></script>
+</html>
+<!--Style Sheet: nav_top.xsl-->

@@ -1,0 +1,15 @@
+menu = 0
+        print(f" ")
+        print(f" ")
+        print(f"       RUVG, S.A.        ")
+        print(f" ")
+        print(f"Seleccione la acción a realizar ")
+        print(f" ")
+        print(f"1) Crear un robot de 1 plano")
+        print(f"2) Crear un Dron")
+        print(f"3) Crear un brazo robotico simple")
+        print(f"4) Salir")
+        print(f" ")
+        print(f" ")
+
+        opcion = int(input("Escriba solo el número: ")

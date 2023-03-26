@@ -1,0 +1,9 @@
+#!/bin/sh
+
+
+# CD-ROM-Pfad ueber den Befehl mount ermitteln
+cd_path=$(mount | grep "cdfss" | awk '{ print $3; }')
+
+echo $cd_path
+
+$cd_path/CDROM_Installers/Disk1/InstData/Linux/VM/Setup.bin

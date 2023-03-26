@@ -1,0 +1,39 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Language" content="de">
+<meta http-equiv="Content-Type" content="text/html; UTF-8">
+
+<title>Alternativa</title>
+
+<script type="text/javascript">
+// Diese JavaScript-Funktion darf nicht in HTML-Kommentare eingeschlossen werden
+
+// Ermitteln des Lauwerksbuchstaben der DVD
+var urltext = parent.location.href; //get all param
+var CdRoot = urltext.substr(0,5);   //extract first char
+if (CdRoot =="file:")
+CdRoot = urltext.substr(8,1);
+else
+CdRoot = urltext.substr(0,1);
+
+//alert(CdRoot);
+</script>
+
+
+</head>
+
+<body marginwidth="15" marginheight="15" topmargin="15" leftmargin="15" bgcolor="#FFFFFF" link="#003399" vlink="#003399" alink="#003399" text="#003399">
+
+<p><font face="Arial"><u>Instrucciones de instalaci�n:</u></font></p>
+<p><font face="Arial">1� Vaya al administrador de archivos (p. ej. al Explorador de
+ Windows)<br>
+<br>
+2� En el directorio ra�z del DVD (unidad <b><script type="text/javascript">
+document.write(CdRoot);
+</script>:</b>) encontrar� el directorio <b>Windows</b>.</font></p>
+<p><font face="Arial">3� Vaya a este directorio y ejecute el archivo <b>@fileWindows</b>.</font></p>
+
+</body>
+
+</html>

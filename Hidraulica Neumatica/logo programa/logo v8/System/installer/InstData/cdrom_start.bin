@@ -1,0 +1,10 @@
+#!/bin/sh
+
+# Linux Shell Script
+# Sucht den CD-ROM-Pfad und startet die Anwendung von der CD-ROM aus
+
+cd_path=$(mount | grep "cdfss" | awk '{ print $3; }')
+
+echo $cd_path
+
+$cd_path/Linux/Application/LOGOComfort

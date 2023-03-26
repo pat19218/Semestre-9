@@ -1,0 +1,33 @@
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="Generator" CONTENT="Microsoft Word 97">
+<META NAME="Template" CONTENT="C:\Program Files\Microsoft Office\Office\html.dot">
+
+<script type="text/javascript">
+// Diese JavaScript-Funktion darf nicht in HTML-Kommentare eingeschlossen werden
+
+// Ermitteln des Lauwerksbuchstaben der DVD
+var urltext = parent.location.href; //get all param
+var CdRoot = urltext.substr(0,5);   //extract first char
+if (CdRoot =="file:")
+CdRoot = urltext.substr(8,1);
+else
+CdRoot = urltext.substr(0,1);
+
+//alert(CdRoot);
+</script>
+
+
+</HEAD>
+<BODY LINK="#0000ff" VLINK="#800080">
+
+<FONT FACE="Arial" SIZE=3><P><U>Instructions d'installation :</U></P>
+<P>1. D&eacute;marrez un gestionnaire de fichiers (p. ex. l'Explorateur de Windows)<BR>
+<BR>
+2. Dans le r&eacute;pertoire principal du DVD (lecteur <b><script type="text/javascript">
+document.write(CdRoot);
+</script>:</b>), vous trouverez le r&eacute;pertoire <B>Windows</B>.</P>
+<P>3. Ouvrez ce r&eacute;pertoire pour y ex&eacute;cuter le fichier <B>@fileWindows</B>.</P>
+<P>&nbsp;</P></FONT></BODY>
+</HTML>

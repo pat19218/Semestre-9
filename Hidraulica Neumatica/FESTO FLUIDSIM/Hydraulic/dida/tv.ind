@@ -1,0 +1,560 @@
+p1.ct Tutorial
+p1_1.ct Experiments
+p1_1_1.ct Moving a mass
+p1_1_1_1.ct Horizontal movement of a mass
+p1_1_1_1_1.ct The double acting cylinder
+p1_1_1_1_2.ct Preset cylinder parameters
+p1_1_1_1_3.ct External load and friction
+p1_1_1_1_4.ct Operating pressure of the pump unit
+p1_1_1_1_5.ct Execution
+p1_1_1_1_6.ct Evaluation
+p1_1_1_1_7.ct Solution
+p1_1_1_1_8.ct Additional exercise
+p1_1_1_1_9.ct Evaluation Part 1
+p1_1_1_1_10.ct Evaluation Part 2
+p1_1_1_2.ct Vertical movement of a mass
+p1_1_1_2_1.ct Choice of cylinder
+p1_1_1_2_2.ct Evaluation
+p1_1_1_2_3.ct Solution
+p1_1_1_2_4.ct Function testing
+p1_1_1_2_5.ct Additional exercise
+p1_1_1_2_6.ct Evaluation Part 1
+p1_1_1_2_7.ct Evaluation Part 2
+p1_1_2.ct Determination of the hydraulic resistance
+p1_1_2_1.ct Execution
+p1_1_2_2.ct Evaluation
+p1_1_3.ct Moment of inertia
+p1_1_3_1.ct Law of Inertia
+p1_1_3_2.ct Test set up
+p1_1_3_3.ct Preset cylinder parameters
+p1_1_3_4.ct Setting the moving mass
+p1_1_3_5.ct Pump unit settings
+p1_1_3_6.ct Execution
+p1_1_3_7.ct Evaluation
+p1_1_3_8.ct Inserting a counter force
+p1_1_3_9.ct Evaluation
+p1_1_3_10.ct Increasing the moving mass
+p1_1_3_11.ct Evaluation
+p1_2.ct Excursus
+p1_2_1.ct Physical Essentials
+p1_2_1_1.ct Pressure definitions
+p1_2_1_2.ct Pressure transmission
+p1_2_1_3.ct Properties of hydraulic fluids
+p1_2_1_3_1.ct Density
+p1_2_1_3_2.ct Viscosity
+p1_2_1_4.ct Flow rate models
+p1_2_1_4_1.ct Reynolds-Number
+p1_2_1_4_2.ct Friction, Heat, Pressure loss
+p1_2_1_4_3.ct Laminar Flow
+p1_2_1_4_3_1.ct Resistance of components to laminar flow
+p1_2_1_4_4.ct Turbulent Flow
+p1_2_1_4_4_1.ct Orifice Resistance
+p1_2_1_4_4_2.ct Setting the hydraulic resistance in FluidSIM
+p1_2_1_4_4_3.ct Resistance of continuous valves
+p1_2_1_5.ct Cavitation
+p1_2_1_6.ct Vapour pressure
+p1_2_1_7.ct Compressibility of hydraulic fluids
+p1_2_1_8.ct Pressure energy
+p1_2_1_8_1.ct Pressure build-up in a reservoir
+p1_2_1_8_2.ct Comparison: calculation und simulation
+p1_2_2.ct Calculating the theoretical and effective piston force
+p1_2_2_1.ct Theoretical piston force
+p1_2_2_1_1.ct Example
+p1_2_2_1_2.ct Exercise
+p1_2_2_1_3.ct Solution
+p1_2_2_1_4.ct Calculating the piston-rod diameter
+p1_2_2_2.ct Effective piston force
+p1_3.ct Mathematical models
+p1_3_1.ct Model of the pump unit
+p1_3_2.ct Model of the pump
+p1_3_3.ct Model of the hydraulic reservoir
+p1_3_4.ct Flow rate model of components with a constant cross-section
+p1_3_5.ct Model of the hydraulic line
+p1_3_6.ct Flow rate model of components with pressure dependent cross-section
+p1_3_7.ct Model of the configurable way valve
+p1_3_8.ct Model of the 2-way flow control valve
+p1_3_9.ct Model of the 3-way flow control valve
+p1_3_10.ct Model of the flow dividing valve
+p1_3_11.ct Model of the piloted pressure relief valve
+p1_3_12.ct Model of the piloted pressure regulating valve
+p1_3_13.ct Model of the cylinder
+p1_3_13_1.ct Equilibrium of forces
+p1_3_13_1_1.ct Friction depending on velocity
+p1_3_13_1_2.ct The counteracting force of gravity during the extension
+p1_3_13_1_3.ct The user-specified force
+p1_3_13_1_4.ct The spring force of cylinders with spring return
+p1_3_13_2.ct Leakage
+p1_3_14.ct Model of the rotary drive
+p1_3_14_1.ct Equilibrium of torque
+p1_3_14_2.ct Leakage
+p1_3_14_3.ct Angular velocity
+p1_3_15.ct Simulation methods
+p1_4.ct Various
+p1_4_1.ct International System of Units (SI)
+p1_4_2.ct Literature
+p2.ct Component Library
+p2_1.ct Hydraulic Components
+p2_1_1.ct Service Components
+p2_1_1_1.ct Pump unit
+p2_1_1_2.ct Pump unit (simplified)
+p2_1_1_3.ct Fixed displacement pump
+p2_1_1_4.ct Variable displacement pump
+p2_1_1_5.ct Proportional pump
+p2_1_1_6.ct Tank
+p2_1_1_7.ct Hose with quick-action coupling
+p2_1_1_8.ct Hydraulic reservoir
+p2_1_1_9.ct Hydraulic reservoir
+p2_1_1_10.ct Diaphragm accumulator with shutoff block
+p2_1_1_11.ct Filter
+p2_1_1_12.ct Cooler
+p2_1_1_13.ct Heater
+p2_1_1_14.ct Connection (hydraulic)
+p2_1_1_15.ct Line (hydraulic)
+p2_1_1_16.ct T-junction (hydraulic)
+p2_1_2.ct Configurable Way Valves
+p2_1_2_1.ct Configurable 2/n way valve
+p2_1_2_2.ct Configurable 3/n way valve
+p2_1_2_3.ct Configurable 4/n way valve
+p2_1_2_4.ct Configurable 5/n way valve
+p2_1_2_5.ct Configurable 6/n way valve
+p2_1_2_6.ct Configurable 8/n way valve
+p2_1_3.ct Mechanically Actuated Directional Valves
+p2_1_3_1.ct 2/2-way stem-Actuated valve (i)
+p2_1_3_2.ct 2/2-way stem-Actuated valve (ii)
+p2_1_3_3.ct 3/2-way hand-lever valve
+p2_1_3_4.ct 4/2-way hand-lever valve (i)
+p2_1_3_5.ct 4/2-way hand-lever valve (ii)
+p2_1_3_6.ct 4/3-way hand-lever valve with shutoff position (i)
+p2_1_3_7.ct 4/3-way hand-lever valve with shutoff position (ii)
+p2_1_3_8.ct 4/3-way hand-lever valve with floating position (i)
+p2_1_3_9.ct 4/3-way hand-lever valve with floating position (ii)
+p2_1_3_10.ct 4/3-way hand-lever valve with bypass position (i)
+p2_1_3_11.ct 4/3-way hand-lever valve with bypass position (ii)
+p2_1_4.ct Solenoid-actuated Directional Valves
+p2_1_4_1.ct 4/2-way solenoid valve (i)
+p2_1_4_2.ct 4/2-way solenoid valve (ii)
+p2_1_4_3.ct 4/3-way solenoid valve with shutoff position (i)
+p2_1_4_4.ct 4/3-way solenoid valve with shutoff position (ii)
+p2_1_4_5.ct 4/3-way solenoid valve with floating position (i)
+p2_1_4_6.ct 4/3-way solenoid valve with floating position (ii)
+p2_1_4_7.ct 4/3-way solenoid valve with bypass position (i)
+p2_1_4_8.ct 4/3-way solenoid valve with bypass position (ii)
+p2_1_5.ct Shutoff Valves
+p2_1_5_1.ct Shutoff valve
+p2_1_5_2.ct Check valve
+p2_1_5_3.ct Check valve, spring loaded
+p2_1_5_4.ct Check valve with pilot control
+p2_1_5_5.ct Check valve with pilot control, spring loaded 
+p2_1_5_6.ct Pilot to close check valve
+p2_1_5_7.ct Pilot to close check valve, spring loaded
+p2_1_5_8.ct Shuttle valve
+p2_1_5_9.ct Two-pressure valve
+p2_1_6.ct Pressure Control Valves
+p2_1_6_1.ct Pressure relief valve
+p2_1_6_2.ct Pressure relief valve with pilot control
+p2_1_6_3.ct Pressure relief valve with pilot control
+p2_1_6_4.ct Shutoff/counteracting valve
+p2_1_6_5.ct 2-way pressure reducing valve
+p2_1_6_6.ct 2-way pressure reducing valve, adjustable
+p2_1_6_7.ct 3-way pressure reducing valve
+p2_1_6_8.ct Closing pressure compensator
+p2_1_6_9.ct Closing pressure compensator, adjustable
+p2_1_6_10.ct Opening pressure compensator
+p2_1_6_11.ct Opening pressure compensator, adjustable
+p2_1_6_12.ct Opening cartridge valve
+p2_1_6_13.ct Closing cartridge valve
+p2_1_7.ct Pressure Switches
+p2_1_7_1.ct Analog pressure sensor
+p2_1_8.ct Flow Control Valves
+p2_1_8_1.ct Nozzle
+p2_1_8_2.ct Throttle valve
+p2_1_8_3.ct Orifice
+p2_1_8_4.ct Orifice, adjustable
+p2_1_8_5.ct One-way flow control valve
+p2_1_8_6.ct 2-way flow control valve
+p2_1_8_7.ct 3-way flow control valve
+p2_1_8_8.ct Flow divider valve
+p2_1_9.ct Continuous valves
+p2_1_9_1.ct 4/3-way regulating valve
+p2_1_9_2.ct 4/3-way proportional valve
+p2_1_9_3.ct Proportional throttle valve
+p2_1_9_4.ct Proportional pressure relief valve
+p2_1_9_5.ct Proportional pressure relief valve, piloted
+p2_1_9_6.ct Proportional pressure reducing valve, piloted
+p2_1_10.ct Actuators
+p2_1_10_1.ct Configurable cylinder
+p2_1_10_2.ct Double acting cylinder
+p2_1_10_3.ct Double acting cylinder with shock adsorber at stroke end
+p2_1_10_4.ct Double acting cylinder with in and out piston rod and shock adsorber at stroke end
+p2_1_10_5.ct Single acting cylinder
+p2_1_10_6.ct Hydraulic motor
+p2_1_10_7.ct Semi-rotary actuator
+p2_1_11.ct Measuring Devices
+p2_1_11_1.ct Manometer
+p2_1_11_2.ct Differential pressure gauge
+p2_1_11_3.ct Pressure indicator
+p2_1_11_4.ct Pressure sensor, analog
+p2_1_11_5.ct Flow meter
+p2_1_11_6.ct Flow meter
+p2_1_11_7.ct Flow meter, analog
+p2_2.ct Electrical Components
+p2_2_1.ct Power Supply
+p2_2_1_1.ct Electrical connection 0V
+p2_2_1_2.ct Electrical connection 24V
+p2_2_1_3.ct Function generator
+p2_2_1_4.ct Setpoint value card
+p2_2_1_5.ct Connection (electrical)
+p2_2_1_6.ct Line (electrical)
+p2_2_1_7.ct T-junction (electrical)
+p2_2_2.ct Actuators / Signal Devices
+p2_2_2_1.ct DC motor
+p2_2_2_2.ct Indicator light
+p2_2_2_3.ct Buzzer
+p2_2_3.ct Measuring Instruments / Sensors
+p2_2_3_1.ct Voltmeter
+p2_2_3_2.ct Ammeter
+p2_2_3_3.ct Displacement encoder
+p2_2_3_4.ct Pressure sensor, analog
+p2_2_3_5.ct Flow meter, analog
+p2_2_4.ct General Switches
+p2_2_4_1.ct Break switch
+p2_2_4_2.ct Make switch
+p2_2_4_3.ct Changeover switch
+p2_2_5.ct Delay Switches
+p2_2_5_1.ct Break switch (switch-on delayed)
+p2_2_5_2.ct Make switch (switch-on delayed)
+p2_2_5_3.ct Changeover switch (switch-on delayed)
+p2_2_5_4.ct Break switch (switch-off delayed)
+p2_2_5_5.ct Make switch (switch-off delayed)
+p2_2_5_6.ct Changeover switch (switch-off delayed)
+p2_2_6.ct Limit Switches
+p2_2_6_1.ct Limit switch (break)
+p2_2_6_2.ct Switch with roll (break)
+p2_2_6_3.ct Reed contact (break)
+p2_2_6_4.ct Limit switch (make)
+p2_2_6_5.ct Switch with roll (make)
+p2_2_6_6.ct Reed contact (make)
+p2_2_6_7.ct Limit switch (changeover)
+p2_2_6_8.ct Switch with roll (changeover)
+p2_2_6_9.ct Reed contact (changeover)
+p2_2_7.ct Manually Operated Switches
+p2_2_7_1.ct Pushbutton (break)
+p2_2_7_2.ct Pushbutton (make)
+p2_2_7_3.ct Pushbutton (changeover)
+p2_2_7_4.ct Detent switch (break)
+p2_2_7_5.ct Detent switch (make)
+p2_2_7_6.ct Detent switch (changeover)
+p2_2_8.ct Pressure Switches
+p2_2_8_1.ct Pressure switch (break)
+p2_2_8_2.ct Pressure switch (make)
+p2_2_8_3.ct Pressure switch (changeover)
+p2_2_8_4.ct Pressure switch
+p2_2_9.ct Proximity Switches
+p2_2_9_1.ct Magnetic proximity switch
+p2_2_9_2.ct Inductive proximity switch
+p2_2_9_3.ct Capacitive proximity switch
+p2_2_9_4.ct Optical proximity switch
+p2_2_10.ct Relays
+p2_2_10_1.ct Relay
+p2_2_10_2.ct Relay with switch-on delay
+p2_2_10_3.ct Relay with switch-off delay
+p2_2_10_4.ct Relay counter
+p2_2_10_5.ct Starting current limiter
+p2_2_11.ct Controller
+p2_2_11_1.ct Comparator
+p2_2_11_2.ct PID controller
+p2_2_11_3.ct Status controller
+p2_2_12.ct EasyPort/OPC/DDE Components
+p2_2_12_1.ct FluidSIM Output Port
+p2_2_12_2.ct FluidSIM Input Port
+p2_3.ct Electrical Components (American Standard)
+p2_3_1.ct Power Supply
+p2_3_1_1.ct Electrical connection 0V (ladder)
+p2_3_1_2.ct Electrical connection 24V (ladder)
+p2_3_2.ct General Switches
+p2_3_2_1.ct Break switch (ladder)
+p2_3_2_2.ct Make switch (ladder)
+p2_3_3.ct Delay Switches
+p2_3_3_1.ct Break switch (switch-on delayed, ladder)
+p2_3_3_2.ct Make switch (switch-on delayed, ladder)
+p2_3_3_3.ct Break switch (switch-off delayed, ladder)
+p2_3_3_4.ct Make switch (switch-off delayed, ladder)
+p2_3_4.ct Limit Switches
+p2_3_4_1.ct Limit switch (break, ladder)
+p2_3_4_2.ct Limit switch (make, ladder)
+p2_3_5.ct Manually Operated Switches
+p2_3_5_1.ct Pushbutton (break, ladder)
+p2_3_5_2.ct Pushbutton (make, ladder)
+p2_3_5_3.ct Pushbutton (changeover, ladder)
+p2_3_6.ct Pressure Switches
+p2_3_6_1.ct Pressure switch (break, ladder)
+p2_3_6_2.ct Pressure switch (make, ladder)
+p2_3_7.ct Relays
+p2_3_7_1.ct Relay (ladder)
+p2_3_7_2.ct Relay with switch-on delay (ladder)
+p2_3_7_3.ct Relay with switch-off delay (ladder)
+p2_4.ct Digital Components
+p2_4_1.ct Constants and Connectors
+p2_4_1_1.ct Digital input
+p2_4_1_2.ct Digital output
+p2_4_1_3.ct Memory bits
+p2_4_1_4.ct Logic level HI
+p2_4_1_5.ct Logic level LO
+p2_4_1_6.ct Connection (digital)
+p2_4_1_7.ct Line (digital)
+p2_4_1_8.ct T-junction (digital)
+p2_4_2.ct Basic Functions
+p2_4_2_1.ct AND
+p2_4_2_2.ct Edge-triggered AND
+p2_4_2_3.ct NAND (AND not)
+p2_4_2_4.ct NAND With Edge Evaluation
+p2_4_2_5.ct OR
+p2_4_2_6.ct NOR (OR not)
+p2_4_2_7.ct XOR (exclusive OR)
+p2_4_2_8.ct NOT (Negation, Inverter)
+p2_4_3.ct Special Functions
+p2_4_3_1.ct Digital module
+p2_4_3_2.ct On delay
+p2_4_3_3.ct Off delay
+p2_4_3_4.ct On/Off delay
+p2_4_3_5.ct Retentive On delay
+p2_4_3_6.ct Latching Relay
+p2_4_3_7.ct Pulse Relay
+p2_4_3_8.ct Wiping Relay - Pulse Output
+p2_4_3_9.ct Edge-triggered Wiping Relay
+p2_4_3_10.ct Timer Switch
+p2_4_3_11.ct Up/Down Counter
+p2_4_3_12.ct Symmetric Clock Generator
+p2_4_3_13.ct Asynchronous Pulse Generator
+p2_4_3_14.ct Frequency Threshold Trigger
+p2_5.ct GRAFCET Elements
+p2_5_1.ct GRAFCET
+p2_5_1_1.ct Step
+p2_5_1_2.ct Transition
+p2_5_1_3.ct Action
+p2_5_1_4.ct Synchronization
+p2_5_1_5.ct Partial GRAFCET
+p2_5_1_6.ct GRAFCET-I/O
+p2_6.ct Miscellaneous
+p2_6_1.ct Miscellaneous
+p2_6_1_1.ct Connection (mechanical)
+p2_6_1_2.ct Valve solenoid
+p2_6_1_3.ct Proportional valve solenoid, position controlled
+p2_6_1_4.ct Proportional amplifier, 1-channel
+p2_6_1_5.ct Proportional amplifier, 2-channel
+p2_6_1_6.ct Valve solenoid (ladder)
+p2_6_1_7.ct Distance rule
+p2_6_1_8.ct Status indicator
+p2_6_1_9.ct Cam switch
+p2_6_1_10.ct Text
+p2_6_1_11.ct State diagram
+p2_6_1_12.ct Terminal assignment diagram
+p2_6_1_13.ct Functional diagram editor
+p2_6_1_14.ct Parts list
+p2_6_1_15.ct Rectangle
+p2_6_1_16.ct Ellipse
+p2_6_1_17.ct Bitmap
+p3.ct Didactics Material
+p3_1.ct Basics and working principles
+p3_1_1.ct Applications
+p3_1_1_1.ct 1 Lathe
+p3_1_1_2.ct 2 Press with elevated reservoir
+p3_1_1_3.ct 3 Mobile hydraulics: Excavator
+p3_1_2.ct Components of a Hydraulic Plant
+p3_1_2_1.ct 4 Structure of a hydraulic system
+p3_1_2_2.ct 5 Hydraulic power section
+p3_1_2_3.ct 6 Block diagram of a control system
+p3_1_2_4.ct 7 Interaction of components 
+p3_1_2_5.ct 8 Action related numbering
+p3_1_2_6.ct 9 Numbering in accordance with DIN ISO 1219-2
+p3_1_2_7.ct 10 Numbering in accordance with parts list
+p3_1_3.ct Symbols
+p3_1_3_1.ct 11 Circuit symbols for energy transfer (1)
+p3_1_3_2.ct 12 Circuit symbols for energy transfer (2)
+p3_1_3_3.ct 13 Circuit symbols for energy conversion
+p3_1_3_4.ct 14 Circuit symbols for hydraulic motors
+p3_1_3_5.ct 15 Circuit symbols for single acting cylinders
+p3_1_3_6.ct 16 Circuit symbols for double acting cylinders
+p3_1_3_7.ct 17 Circuit symbols for directional control valves (1)
+p3_1_3_8.ct 18 Circuit symbols for directional control valves (2)
+p3_1_3_9.ct 19 Circuit symbols for directional control valves (3)
+p3_1_3_10.ct 20 Circuit symbols for manual operation
+p3_1_3_11.ct 21 Circuit symbols for mechanical actuation
+p3_1_3_12.ct 22 Circuit symbol for pressure valves
+p3_1_3_13.ct 23 Circuit symbols for flow control valves
+p3_1_3_14.ct 24 Circuit symbols for non-return valves
+p3_1_3_15.ct 25 Circuit symbols for measuring devices
+p3_1_4.ct Some Physical Fundamentals
+p3_1_4_1.ct 26 Hydrostatic pressure
+p3_1_4_2.ct 27 Pressure propagation
+p3_1_4_3.ct 28 Power transmission
+p3_1_4_4.ct 29 Displacement transmission (1)
+p3_1_4_5.ct 30 Displacement transmission (2)
+p3_1_4_6.ct 31 Pressure transfer (1)
+p3_1_4_7.ct 32 Pressure transfer (2)
+p3_1_4_8.ct 33 Types of flow
+p3_1_4_9.ct 34 Diesel effect 
+p3_1_4_10.ct 35 Cavitation
+p3_1_4_11.ct 36 Cavitation 
+p3_1_4_12.ct 37 Input and output power
+p3_1_5.ct Components of a Power Unit
+p3_1_5_1.ct 38 Hydraulic power unit
+p3_1_5_2.ct 39 Hydraulic power unit: Reservoir
+p3_1_5_3.ct 40 Externally toothed gear pump
+p3_1_5_4.ct 41 Internally toothed gear pump 
+p3_1_5_5.ct 42 Circuit diagram: Return flow filter
+p3_1_5_6.ct 43 Circuit diagram : Pump inlet filter
+p3_1_5_7.ct 44 Circuit diagram: Pressure line filter
+p3_1_5_8.ct 45 Circuit diagram: Contamination indicator
+p3_1_5_9.ct 46 Water cooler
+p3_1_5_10.ct 47 Air cooler
+p3_1_5_11.ct 48 Heating element
+p3_1_5_12.ct 49 Circuit diagram: Hydraulic power unit
+p3_1_6.ct Fundamentals of Valves
+p3_1_6_1.ct 50 Actuating force
+p3_1_6_2.ct 51 Poppet principle
+p3_1_6_3.ct 52 Slide principle
+p3_1_6_4.ct 53 Poppet valves
+p3_1_6_5.ct 54 Piston overlap
+p3_1_6_6.ct 55 Negative switching overlap
+p3_1_6_7.ct 56 Positive switching overlap
+p3_1_6_8.ct 57 Control edges
+p3_1_6_9.ct 58 Vertical interconnection system
+p3_1_7.ct Pressure Valves
+p3_1_7_1.ct 59 Pressure relief valve (1)
+p3_1_7_2.ct 60 Pressure relief valve (2)
+p3_1_7_3.ct 61 PRV used to limit system pressure
+p3_1_7_4.ct 62 Circuit diagram: PRV used to limit system pressure
+p3_1_7_5.ct 63 Circuit without brake valve 
+p3_1_7_6.ct 64 Circuit diagram: Brake valve
+p3_1_7_7.ct 65 Circuit with brake valve 
+p3_1_7_8.ct 66 Circuit diagram: PRV as back-pressure valve
+p3_1_7_9.ct 67 PRV, internally controlled, cushioned
+p3_1_7_10.ct 68 PRV, externally controlled (1)
+p3_1_7_11.ct 69 PRV, externally controlled (2)
+p3_1_7_12.ct 70 Sequence valve
+p3_1_7_13.ct 71 Circuit diagram: Sequence valve
+p3_1_7_14.ct 72 Pressure relief valve
+p3_1_7_15.ct 73 2-way pressure regulator (1)
+p3_1_7_16.ct 74 2-way pressure regulator (2)
+p3_1_7_17.ct 75 2-way pressure regulator (3)
+p3_1_7_18.ct 76 2-way pressure regulator (4)
+p3_1_7_19.ct 77 2-way pressure regulator (5)
+p3_1_7_20.ct 78 Circuit diagram: 2-way pressure regulator
+p3_1_7_21.ct 79 Circuit diagram: 2-way pressure regulator
+p3_1_7_22.ct 80 3-way pressure regulator (1)
+p3_1_7_23.ct 81 3-way pressure regulator (2)
+p3_1_7_24.ct 82 3-way pressure regulator (3)
+p3_1_7_25.ct 83 3-way pressure regulator (4)
+p3_1_7_26.ct 84 3-way pressure regulator 
+p3_1_7_27.ct 85 3-way pressure regulator (5)
+p3_1_7_28.ct 86 3-way pressure regulator (6)
+p3_1_7_29.ct 87 Circuit diagram: 3-way pressure regulator
+p3_1_8.ct Way Valves
+p3_1_8_1.ct 88 2/2-way valve (1)
+p3_1_8_2.ct 89 2/2-way valve (2)
+p3_1_8_3.ct 90 2/2-way valve as by-pass valve
+p3_1_8_4.ct 91 Circuit diagram: 2/2-way valve as by-pass valve
+p3_1_8_5.ct 92 Circuit diagram: 2/2-way valve as final control element
+p3_1_8_6.ct 93 2/2-way valve as final control element 
+p3_1_8_7.ct 94 Circuit diagram for pressure-less pump recirculation
+p3_1_8_8.ct 95 Circuit diagram: Pressure stage circuit
+p3_1_8_9.ct 96 3/2-way valve (poppet principle) (1)
+p3_1_8_10.ct 97 3/2-way valve (poppet principle) (2)
+p3_1_8_11.ct 98 3/2-way valve as final control element
+p3_1_8_12.ct 99 Circuit diagram: 3/2-way valve as final control element
+p3_1_8_13.ct 100 3/2-way valve 
+p3_1_8_14.ct 101 3/2-way valve (slide principle) (1)
+p3_1_8_15.ct 102 3/2-way valve (slide principle) (2)
+p3_1_8_16.ct 103 3/2-way valves as diverter
+p3_1_8_17.ct 104 4/2-way valve, two pistons (1)
+p3_1_8_18.ct 105 4/2-way valve, two pistons (2)
+p3_1_8_19.ct 106 4/2-way valve, three pistons (1)
+p3_1_8_20.ct 107 4/2-way valve, three pistons (2)
+p3_1_8_21.ct 108 4/2-way valve, three pistons (3)
+p3_1_8_22.ct 109 Circuit diagram: 4/2-way valve
+p3_1_8_23.ct 110 4/3-way valve with pump bypass (1)
+p3_1_8_24.ct 111 4/3-way valve with pump bypass (2)
+p3_1_8_25.ct 112 4/3-way valve with pump bypass (3)
+p3_1_8_26.ct 113 4/3-way valve with pump bypass (4)
+p3_1_8_27.ct 114 Circuit diagram: 4/3-way valve with pump bypass
+p3_1_8_28.ct 115 4/3-way valve with pump bypass 
+p3_1_8_29.ct 116 4/3-way valve with closed mid-position (1)
+p3_1_8_30.ct 117 4/3-way valve with closed mid-position (2)
+p3_1_8_31.ct 118 4/3-way valve with closed mid-position (3)
+p3_1_8_32.ct 119 4/3-way valve with closed mid-position (4)
+p3_1_8_33.ct 120 Circuit diagram: 4/3-way valve with closed mid-position
+p3_1_8_34.ct 121 4/3-way valve: overlap positions (1)
+p3_1_8_35.ct 122 4/3-way valve: overlap positions (2)
+p3_1_8_36.ct 123 Directional control valve
+p3_1_8_37.ct 124 4/3-way module
+p3_1_9.ct Shutoff Valves
+p3_1_9_1.ct 125 Non-return valve (1)
+p3_1_9_2.ct 126 Non-return valve (2)
+p3_1_9_3.ct 127 Circuit diagram: Pump protection
+p3_1_9_4.ct 128 Graetz block (1)
+p3_1_9_5.ct 129 Graetz block (2)
+p3_1_9_6.ct 130 Graetz block 
+p3_1_9_7.ct 131 Delockable non-return valve (1)
+p3_1_9_8.ct 132 Delockable non-return valve (2)
+p3_1_9_9.ct 133 Delockable non-return valve (3)
+p3_1_9_10.ct 134 Circuit diagram: Delockable non-return valve
+p3_1_9_11.ct 135 Delockable non-return valve 
+p3_1_9_12.ct 136 Delockable double non-return valve (1)
+p3_1_9_13.ct 137 Delockable double non-return valve (2)
+p3_1_9_14.ct 138 Delockable double non-return valve (3)
+p3_1_9_15.ct 139 Circuit diagram: Delockable double non-return valve
+p3_1_10.ct Flow Valves
+p3_1_10_1.ct 140 Needle restrictor
+p3_1_10_2.ct 141 Gap restrictor with helix
+p3_1_10_3.ct 142 Circuit diagram: Flow division using restrictor
+p3_1_10_4.ct 143 Flow control valve
+p3_1_10_5.ct 144 One-way flow control valve (1)
+p3_1_10_6.ct 145 One-way flow control valve (2)
+p3_1_10_7.ct 146 2-way flow control valve (1)
+p3_1_10_8.ct 147 2-way flow control valve (2)
+p3_1_10_9.ct 148 2-way flow control valve (3)
+p3_1_10_10.ct 149 Circuit diagram: 2-way flow control valve
+p3_1_10_11.ct 150 2-way flow control valve 
+p3_1_11.ct Hydraulic Cylinders and Motors
+p3_1_11_1.ct 151 Single acting cylinder
+p3_1_11_2.ct 152 Plunger cylinder
+p3_1_11_3.ct 153 Double acting cylinder
+p3_1_11_4.ct 154 Double acting cylinder with end position cushioning
+p3_1_11_5.ct 155 End position cushioning (1)
+p3_1_11_6.ct 156 End position cushioning (2)
+p3_1_11_7.ct 157 End position cushioning 
+p3_1_11_8.ct 158 Double acting cylinder
+p3_1_11_9.ct 159 Automatic bleed valve 
+p3_1_12.ct Gauges
+p3_1_12_1.ct 160 Piston pressure gauge
+p3_1_12_2.ct 161 Bourdon-tube pressure gauge
+p3_1_12_3.ct 162 Flow meter
+p3_1_13.ct Exercises
+p3_1_13_1.ct 163 Exercise: Horizontal grinding machine (pump delivery)
+p3_1_13_2.ct 164 Exercise: Bending machine (directly-controlled pressure relief valve)
+p3_1_13_3.ct 165 Exercise: Roller conveyor (flow resistance)
+p3_1_13_4.ct 166 Exercise: Embossing press (activation of a single acting cylinder)
+p3_1_13_5.ct 167 Exercise: Ladle (activation of a double acting cylinder)
+p3_1_13_6.ct 168 Exercise: Paint drying oven (4/3-way valve)
+p3_1_13_7.ct 169 Exercise: Clamping device (closing speed)
+p3_1_13_8.ct 170 Exercise: Hydraulic crane (speed reduction)
+p3_1_13_9.ct 171 Exercise: Feed control for a lathe (speed control)
+p3_1_13_10.ct 172 Exercise: Planing machine (by-pass circuit)
+p3_1_13_11.ct 173 Exercise: Drilling machine (pressure regulator)
+p3_2.ct Educational films
+p3_2_1.ct 1 Introduction 
+p3_2_2.ct 2 Fundamentals: Pressure fluids 
+p3_2_3.ct 3 Fundamentals: Pressure and Flow Rate 
+p3_2_4.ct 4 Fundamentals: Transmission of Force and Displacement 
+p3_2_5.ct 5 Fundamentals: Pressure Transmission 
+p3_2_6.ct 6 Fundamentals: Types of Flow 
+p3_2_7.ct 7 Basic Design of Hydraulic Systems 
+p3_2_8.ct 8 The Hydraulic Power Unit 
+p3_2_9.ct 9 Hydraulic Drives 
+p3_2_10.ct 10 Valves 
+p3_2_11.ct 11 Valves: Directional Control Valves 
+p3_2_12.ct 12 Valves: Non-Return Valves 
+p3_2_13.ct 13 Valves: Pressure Control Valves 
+p3_2_14.ct 14 Valves: Flow Control Valves 
+p3_2_15.ct 15 Representation of Hydraulic Systems in Circuit Diagrams 

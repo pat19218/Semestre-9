@@ -1,0 +1,32 @@
+Datos:
+	valores a  manipular
+Metodos:
+	acciones q se pueden hacer. Funciones
+
+Clase: 
+	Contiene datos y metodos.
+
+Objeto:
+	Se instancea una clase. Creo un objeto con nombre y caracteristicas
+
+Encapsulación:
+	Datos que estan dentro de un objeto y estos son privados (Estan protegidos)
+
+Abstracción:
+	Alguien puede usar el programa sin necesidad de saber que esta sucediendo dentro de
+
+Herencia:
+	Re-utilizar clase(s) que ira dentro de una clase.
+	
+Polimorfismo:
+	Cuando modifico un metodo de la clase hija, ya que cambia segun su situación
+	ej:
+		Areas, perimetros.
+	-Cambia acorde a cada clase hija (figuras)
+
+
+
+
+
+
+

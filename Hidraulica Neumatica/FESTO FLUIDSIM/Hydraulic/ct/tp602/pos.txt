@@ -1,0 +1,2 @@
+DESCR TP 602 (Elektrohydraulik Aufbaustufe)
+375 5 962 908 0.500000
