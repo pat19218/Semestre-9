@@ -116,7 +116,7 @@ function [q, q_hist] = robot_ikine(Td, q0, type, method, maxiter, tolp, tolo)
                 o_k = T(1:3, 4);    % posicion actual 
                 ep = od - o_k;      % Error actual
                 eo = zeros(3, 1);
-                
+                ek = [ep;eo];
             case 'rot'
                 %Procedimiento para error de orientacion
                 R2 = T(1:3,1:3);
@@ -125,7 +125,7 @@ function [q, q_hist] = robot_ikine(Td, q0, type, method, maxiter, tolp, tolo)
                 Qe = multcuat(Q1,iQ2);    
                 eo = cuat2rot(Qe);        %Error de orientacion
                 ep = zeros(3, 1);
-                     
+                ek = [ep;eo];
             case 'full'
                 o_k = T(1:3, 4);    % posicion actual 
                 ep = od - o_k;      % Error actual
@@ -154,12 +154,12 @@ function [q, q_hist] = robot_ikine(Td, q0, type, method, maxiter, tolp, tolo)
                 Jip = alphap*(Jv');   % traspuesta
                 
                 alphao = ((eo')*Jw*(Jw')*eo)/((eo')*Jw*(Jw')*Jw*(Jw')*eo);
-                %Jio = alphao*(Jw');   % traspuesta
+                Jio = alphao*(Jw');   % traspuesta
             otherwise
                 error('Invalid ikine method.');
         end
         
-        q = q + Jip * ep;    % algoritmo de cinemática inversa        
+        q = q + Jip * ep + Jio * eo;    % algoritmo de cinemática inversa        
         k = k + 1;
         q_hist(:, k) = q; % se almacena la configuración en el histórico 
     end

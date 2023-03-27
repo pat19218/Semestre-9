@@ -30,13 +30,13 @@ qfull_transpose = robot_ikine(Tdtest, q0, 'full', 'transpose', 100);
 % 1 - pseudo-inversa
 % 2 - levenberg-marquadt
 % 3 - transpuesta
-metodo_con_convergencia_mas_rapida = 0;
+metodo_con_convergencia_mas_rapida = 1;
 
 % Método con convercia más rápida, opciones:
 % 1 - pseudo-inversa
 % 2 - levenberg-marquadt
 % 3 - transpuesta
-metodo_con_convergencia_mas_suave = 0;
+metodo_con_convergencia_mas_suave = 3;
 
 % Combinación que NO funcionó como se esperaba:
 % 1 - IK de posición con pseudo-inversa
@@ -48,4 +48,4 @@ metodo_con_convergencia_mas_suave = 0;
 % 7 - IK completa con pseudo-inversa
 % 8 - IK completa con levenberg-marquadt
 % 9 - IK completa con transpuesta
-combinacion_que_no_funciono = 0;
+combinacion_que_no_funciono = 9;
