@@ -116,6 +116,7 @@ function [q, q_hist] = robot_ikine(Td, q0, type, method, maxiter, tolp, tolo)
                 o_k = T(1:3, 4);    % posicion actual 
                 ep = od - o_k;      % Error actual
                 eo = zeros(3, 1);
+                e = [ep;eo];
                 
             case 'rot'
                 %Procedimiento para error de orientacion
@@ -125,6 +126,7 @@ function [q, q_hist] = robot_ikine(Td, q0, type, method, maxiter, tolp, tolo)
                 Qe = multcuat(Q1,iQ2);    
                 eo = Qe(2:end);%cuat2rot(Qe);    %Error de orientacion
                 ep = zeros(3, 1);
+                e = [ep;eo];
                     
             case 'full'
                 o_k = T(1:3, 4);    % posicion actual 
@@ -135,6 +137,7 @@ function [q, q_hist] = robot_ikine(Td, q0, type, method, maxiter, tolp, tolo)
                 iQ2 = invcuat(Q2);
                 Qe = multcuat(Q1,iQ2);    
                 eo = Qe(2:end);%cuat2rot(Qe);        %Error de orientacion
+                e = [ep;eo];
                
             otherwise
                 error('Invalid ikine type.');
@@ -145,12 +148,12 @@ function [q, q_hist] = robot_ikine(Td, q0, type, method, maxiter, tolp, tolo)
             case 'pinv'
                 Jip = pinv(Jv);  % pseudo-inversa
                 Jio = pinv(Jw);  
-                
+                Ji = pinv(J);
             case 'dampedls'
                 lambda_square = 0.1;
                 Jip = Jv' / (Jv*Jv' + (lambda_square)*eye(3)); % Levenberg-Marquadt
                 Jio = Jw' / (Jw*Jw' + (lambda_square)*eye(3)); % Levenberg-Marquadt
-                
+                Ji = J' / (J*J' + (lambda_square)*eye(6));
             case 'transpose'
                 alphap = ((ep')*Jv*(Jv')*ep)/((ep')*Jv*(Jv')*Jv*(Jv')*ep);
                 Jip = alphap*(Jv');   % traspuesta
@@ -158,11 +161,25 @@ function [q, q_hist] = robot_ikine(Td, q0, type, method, maxiter, tolp, tolo)
                 alphao = ((eo')*Jw*(Jw')*eo)/((eo')*Jw*(Jw')*Jw*(Jw')*eo);
                 Jio = alphao*(Jw');   % traspuesta
                 
+                alpha = ((e')*J*(J')*e)/((e')*J*(J')*J*(J')*e);
+                Ji = alpha*(J');   % traspuesta
+                
             otherwise
                 error('Invalid ikine method.');
         end
         
-        q = q + Jip * ep;    % algoritmo de cinemática inversa        
+        switch type
+            case 'pos'
+               q = q + Jip * ep;    % algoritmo de cinemática inversa
+            case 'rot'
+                q = q + Jio * eo;    % algoritmo de cinemática inversa
+            case 'full'
+               q = q + Ji * e;    % algoritmo de cinemática inversa        
+            otherwise
+                error('Invalid ikine type.');
+        end
+        
+        %q = q + Jip * ep;    % algoritmo de cinemática inversa        
         %q = q + Jip * ep + Jio * eo;    % algoritmo de cinemática inversa        
         k = k + 1;
         q_hist(:, k) = q; % se almacena la configuración en el histórico 

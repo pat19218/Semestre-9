@@ -11,16 +11,25 @@ qtest = (pi/6) * ones(6, 1);
 q0 = zeros(6, 1);
 Tdtest = robot_fkine(qtest);
 qpos_pinv = robot_ikine(Tdtest, q0, 'pos', 'pinv');
+pos_pinv = robot_fkine(qpos_pinv); pos_pinv = pos_pinv(1:3, 4);
 qpos_dampedls = robot_ikine(Tdtest, q0, 'pos', 'dampedls');
+pos_dampedls = robot_fkine(qpos_dampedls); pos_dampedls = pos_dampedls(1:3, 4);
 qpos_transpose = robot_ikine(Tdtest, q0, 'pos', 'transpose', 100);
+pos_transpose = robot_fkine(qpos_transpose); pos_transpose = pos_transpose(1:3, 4);
 
 qrot_pinv = robot_ikine(Tdtest, q0, 'rot', 'pinv');
+rot_pinv = robot_fkine(qrot_pinv); rot_pinv = rot_pinv(1:3, 1:3);
 qrot_dampedls = robot_ikine(Tdtest, q0, 'rot', 'dampedls');
+rot_dampedls = robot_fkine(qrot_dampedls); rot_dampedls = rot_dampedls(1:3, 1:3);
 qrot_transpose = robot_ikine(Tdtest, q0, 'rot', 'transpose', 100);
+rot_transpose = robot_fkine(qrot_transpose); rot_transpose = rot_transpose(1:3, 1:3);
 
-qfull_pinv = robot_ikine(Tdtest, q0, 'full', 'pinv');
+qfull_pinv = robot_ikine(Tdtest, q0, 'full', 'pinv',100);
+full_pinv = robot_fkine(qfull_pinv);
 qfull_dampedls = robot_ikine(Tdtest, q0, 'full', 'dampedls');
+full_dampedls = robot_fkine(qfull_dampedls);
 qfull_transpose = robot_ikine(Tdtest, q0, 'full', 'transpose', 100);
+full_transpose = robot_fkine(qfull_transpose);
 
 %% Inciso 4.
 % Respuesta a las preguntas. Coloque el valor según las opciones que se le

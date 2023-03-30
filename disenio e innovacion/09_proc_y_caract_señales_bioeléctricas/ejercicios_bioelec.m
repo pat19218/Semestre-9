@@ -21,15 +21,71 @@
 %  Note que las señales están como vectores fila. Note también que no se tiene el mismo
 %  número de señales por clase.
 
-
+load('datos_bioelec.mat')
 
 
 %% 1.2 Graficar una señal al azar de cada clase - Figura en el reporte
-%  En la Figura 1 deberá graficar una señal al azar de la clase 1, una señal al azar de la
-%  clase 2, y una señal al azar de la clase 3. Grafique versus tiempo, en segundos
-%  (empezando en t = 0). Use colores distintos para cada gráfica. Identifique los ejes e
-%  incluya una leyenda.
+%En la Figura 1 deberá graficar una señal al azar de la clase 1, una señal al azar de la
+%clase 2, y una señal al azar de la clase 3. Grafique versus tiempo, en segundos
+%(empezando en t = 0). Use colores distintos para cada gráfica. Identifique los ejes e
+%incluya una leyenda.
 
+data = {EMG_c1, EMG_c2, EMG_c3};
+N = zeros(1, 3);
+K = zeros(1, 3);
+for i = 1:3
+    N(i) = size(data{i}, 2);
+    K(i) = size(data{i}, 1);
+end
+
+dif = K(1) - K(2);
+if dif < 0
+    EMG_c1 = [EMG_c1;zeros(abs(dif),N(1))];
+    K(1) = size(EMG_c1, 1);
+elseif dif > 0
+    EMG_c2 = [EMG_c2;zeros(abs(dif),N(2))];    
+    K(2) = size(EMG_c2, 1);
+end
+dif = K(1) - K(3);
+if dif < 0
+    EMG_c1 = [EMG_c1;zeros(abs(dif),N(1))];
+    EMG_c2 = [EMG_c2;zeros(abs(dif),N(2))];
+elseif dif > 0
+    EMG_c3 = [EMG_c3;zeros(abs(dif),N(2))];    
+end
+
+t = (0:(N(1)-1))/Fs_emg;
+
+k1 = randi(K(1));  % Entero al azar entre 1 y K
+k2 = randi(K(2));  % Entero al azar entre 1 y K
+k3 = randi(K(3));  % Entero al azar entre 1 y K
+
+figure(1); clf;
+hi = sgtitle('Señales EMG vs tiempo');
+hi.FontSize = 18;
+hi.Color = 'r';
+hi.FontName = 'verdana';
+subplot(3,1,1);
+plot(t, EMG_c1(k1, :),'Color',[0.1, 0.5, 0.1]);
+%axis([0 1 -1 1])
+legend('Señal tipo 1');
+xlabel('t (s)');
+ylabel('V');
+grid on;
+subplot(3,1,2);
+plot(t, EMG_c2(k2, :),'Color',[0.5, 0.0, 0.1]);
+%axis([0 1 -1 1])
+legend('Señal tipo 2');
+xlabel('t (s)');
+ylabel('V');
+grid on;
+subplot(3,1,3);
+plot(t, EMG_c3(k3, :),'Color',[0.2, 0.5, 0.5]);
+%axis([0 1 -1 1])
+legend('Señal tipo 3');
+xlabel('t (s)');
+ylabel('V');
+grid on;
 
 
 
@@ -43,14 +99,46 @@
 %  carac_emg_1, carac_emg_2, carac_emg_3
 
 
+mav1 = zeros(K1, 1);
+zc1 = zeros(K1, 1);
+for turno = 1:(K1)
+    mav1(turno) = mean(abs(EMG_c1(turno, :)));
+    zc1(turno) = ZC_v2(EMG_c1(turno, :), 0.05);  
+end
+carac_emg_1 = [mav1, zc1]; % Está como vector fila
 
+mav2 = zeros(K2, 1);
+zc2 = zeros(K2, 1);
+for turno = 1:(K2)
+    mav2(turno) = mean(abs(EMG_c2(turno, :)));
+    zc2(turno) = ZC_v2(EMG_c2(turno, :), 0.05);  
+end
+carac_emg_2 = [mav2, zc2]; % Está como vector fila
+
+mav3 = zeros(K3, 1);
+zc3 = zeros(K3, 1);
+for turno = 1:(K3)
+    mav3(turno) = mean(abs(EMG_c3(turno, :)));
+    zc3(turno) = ZC_v2(EMG_c3(turno, :), 0.05);  
+end
+carac_emg_3 = [mav3, zc3]; % Está como vector fila
 
 %% 1.4 Graficar los vectores de características - Figura en el reporte
 %  En la Figura 2 debe graficar los vectores de características obtenidos anteriormente.
 %  Use scatter3. Use un color distinto para cada clase (los mismos colores que usó en la
 %  Figura 1). Etiquete los ejes, incluya una leyenda y coloque un título a la figura.
 
-
+figure(1)
+hold on
+scatter3(X1(:,1), X1(:,2), X1(:,3),s1,c1);
+scatter3(X2(:,1), X2(:,2), X2(:,3),s2,c2);
+grid on
+title('Muestras segun sus caracteristicas')
+xlabel('CARACTERISTICA 1')
+ylabel('CARACTERISTICA 2')
+zlabel('CARACTERISTICA 3')
+legend([{'First'},{'Second'},{'Third'}])
+hold off
 
 
 %% 1.5 Entrenar y usar un clasificador - Matriz(matrices) y porcentaje(s) en el reporte
