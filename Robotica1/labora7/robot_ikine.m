@@ -179,12 +179,13 @@ function [q, q_hist] = robot_ikine(Td, q0, type, method, maxiter, tolp, tolo)
                 error('Invalid ikine type.');
         end
         
-        %q = q + Jip * ep;    % algoritmo de cinemática inversa        
-        %q = q + Jip * ep + Jio * eo;    % algoritmo de cinemática inversa        
         k = k + 1;
         q_hist(:, k) = q; % se almacena la configuración en el histórico 
     end
 
     disp(['ikine algorithm ended after ', num2str(k), ' iterations']);
     q_hist = q_hist(:, 1:k);
+    figure
+    title('Historico de q')
+    plot(q_hist)
 end

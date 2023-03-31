@@ -48,6 +48,8 @@ metodo_con_convergencia_mas_rapida = 1;
 metodo_con_convergencia_mas_suave = 3;
 
 % Combinación que NO funcionó como se esperaba:
+proof = Tdtest - full_transpose;
+
 % 1 - IK de posición con pseudo-inversa
 % 2 - IK de posición con levenberg-marquadt
 % 3 - IK de posición con transpuesta
@@ -58,3 +60,5 @@ metodo_con_convergencia_mas_suave = 3;
 % 8 - IK completa con levenberg-marquadt
 % 9 - IK completa con transpuesta
 combinacion_que_no_funciono = 9;
+
+
