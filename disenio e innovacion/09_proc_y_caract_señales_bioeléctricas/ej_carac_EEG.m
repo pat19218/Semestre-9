@@ -62,6 +62,7 @@ Beta = zeros(k, 1);
 Alpha = zeros(k, 1);
 razon_1 = zeros(k, 1);
 razon_2 = zeros(k, 1);
+
 for turno = 1:K
     trozo = EEG_signals((N_por_10_seg*(turno-1)+1):min([N_por_10_seg*turno, N_tot]));
     trozo = trozo - mean(trozo);

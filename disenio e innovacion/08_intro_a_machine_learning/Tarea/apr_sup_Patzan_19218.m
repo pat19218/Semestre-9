@@ -218,7 +218,8 @@ cm2.Title = sprintf('Modelo Gausiano');
 % esa muestra y 0 para todas aquellas que no lo sea) y en fila
 % la cantidad total de tipos
 X_ann_1 = X_all';
-T_ann_1 = [ones(size(X1, 1),1),zeros(size(X1, 1),1);zeros(size(X2, 1),1),ones(size(X2, 1),1)]';
+T_ann_1 = [ones(size(X1, 1),1),zeros(size(X1, 1),1);
+            zeros(size(X2, 1),1),ones(size(X2, 1),1)]';
 
 net = patternnet(10,'trainscg');
 % Setup Division of Data for Training, Validation, Testing
