@@ -45,7 +45,7 @@ function K = robot_fkine(q)
     % matriz de parámetros DH
     K = IT_B;
     for j = 1:length(q)
-        K = K*Aj(DH(j,1),DH(j,2),DH(j,3),DH(j,4)); % <-- COMPLETAR 
+        K = K * Aj(DH(j, 1), DH(j, 2), DH(j, 3), DH(j, 4)); % <-- COMPLETAR 
     end
     K = K * ET_F;
 end

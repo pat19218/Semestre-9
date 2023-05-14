@@ -12,23 +12,34 @@
 
 const int dirPin = 2;
 const int stepPin = 3;
+
+const int dirPin2 = 4;
+const int stepPin2 = 5;
+
 int stepDelay;
 void setup() {
   // Declarar los pines como salida
   pinMode(dirPin, OUTPUT);
   pinMode(stepPin, OUTPUT);
+  pinMode(dirPin2, OUTPUT);
+  pinMode(stepPin2, OUTPUT);
 }
 void loop() {
   //Activar una dirección y fijar la velocidad con stepDelay
   digitalWrite(dirPin, HIGH);
+  digitalWrite(dirPin2, HIGH);
   stepDelay = 3;
   // Giramos 200 pulsos para hacer una vuelta completa
   for (int x = 0; x < 200; x++) {
     digitalWrite(stepPin, HIGH);
+    digitalWrite(stepPin2, HIGH);
     delay(stepDelay);
     digitalWrite(stepPin, LOW);
+    digitalWrite(stepPin2, LOW);
     delay(stepDelay);
   }
+  delay(1);
+  /*
   delay(1000);
   //Cambiamos la dirección y aumentamos la velocidad
   digitalWrite(dirPin, LOW);
@@ -41,4 +52,5 @@ void loop() {
     delay(stepDelay);
   }
   delay(1000);
+  */
 }

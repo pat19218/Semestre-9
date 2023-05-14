@@ -3,70 +3,68 @@ clear all;clc;
 % IE3041 - Micro-parcial 5
 % =========================================================================
 % Se presenta el siguiente script como base, en donde se realiza la
-% simulaci髇 de un p閚dulo simple sin fricci髇.
+% simulaci贸n de un p茅ndulo simple sin fricci贸n.
 % =========================================================================
-%% Par醡etros y din醡ica del sistema
-m = 1; % kg
-ell = 1; % m
-g = 9.81; % m/s^2
+%% Par谩metros y din谩mica del sistema
+m = 1;      % kg
+ell = 1;    % m
+g = 9.81;   % m/s^2
+
+CG1 = 1;
+CG2 = 1;
 
 % Campo vectorial del sistema (anclado)
 dynamics = @(x,u) [                               x(2); 
                     -(g/ell)*sin(x(1)) + (1/m*ell^2)*u ];
 
-%% Control LQR para el final de la trayectoria
-use_lqr = 1;
-xss = [pi; 0];
-uss = 0;
-[A,B,~,~] = linloc(@dynamics, @dynamics, xss, uss);
-Q = eye(2);
-R = eye(1);
-Klqr = lqr(A,B,Q,R);
 
-%% Par醡etros de la simulaci髇
+%% Par谩metros de la simulaci贸n
 t0 = 0;
-tf = 10; % tiempo de simulaci髇
-dt = 0.01; % tiempo de muestreo
+tf = 20;            % tiempo de simulaci贸n
+dt = 0.01;          % tiempo de muestreo
 K = (tf - t0) / dt;
 
 % Condiciones iniciales
-x0 = [0; 0];
+x0 = [0; 0];        % x inicial
 
-%% Inicializaci髇 y condiciones iniciales
+x_obj = [2*pi; 0];    % x objetivo
+
+%% Inicializaci贸n y condiciones iniciales
 u0 = 0;
-x = x0; % vector de estado
-u = u0; % vector de entradas
+x = x0;         % vector de estado
+u = u0;         % vector de entradas
 % Arrays para almacenar las trayectorias de las variables de estado,
 % entradas y salidas del sistema
 X = zeros(numel(x),K+1);
 U = zeros(numel(u),K+1);
-% Inicializaci髇 de arrays
+% Inicializaci贸n de arrays
 X(:,1) = x0;
 U(:,1) = u0;
 
-%% Se carga la soluci髇 髉tima y se interpola para emplearla como control
-load nlpoptres
-Uq = interp1(0:Topt/Nopt:Topt, Uopt, t0:dt:Topt);
+flag = 0;
 
-
-%% Soluci髇 recursiva del sistema din醡ico
+%% Soluci贸n recursiva del sistema din谩mico
 for k = 0:K
+    
+     Q = eye(2);      % state cost matrix
+    R = 0.01;              % input cost matrix
+
+    [KK,S,e] = lqr([0 1; -g/ell 0], [0; 1/m*ell^2], Q, R);  % LQR gain matrix
+    
     % Se define la entrada para el sistema
-    %u = 0;  %original
-    
-    % Entrada
-    if(k < length(Uq)-170)
-        u = Uq(k+1);
-        if (k == 30)  %length(Uq) = 501
-            u = u -10; 
+    us = -CG1*m*g*ell*sin(x(1, :)) .* x(2, :);
+    ue = -CG2*(x(1, :) - x_obj(1));
+    u = us + ue; - KK*(x - x_obj);
+    u = max(min(u,5),-5);
+    if x(1,:) < pi/4 & x(1,:) > -pi/4 & flag == 0
+        if x(2,:) < 0 & x(1,:) > 0
+            u = -u+1;
+        elseif x(2,:) > 0 & x(1,:) < 0
+            u = u-1;
         end
-    else
-        u = -Klqr*(x-xss) + uss;
     end
-    
-    
-    % Se actualiza el estado del sistema mediante una discretizaci髇 por 
-    % el m閠odo de Runge-Kutta (RK4)
+    % Se actualiza el estado del sistema mediante una discretizaci贸n por 
+    % el m茅todo de Runge-Kutta (RK4)
     k1 = dynamics(x, u);
     k2 = dynamics(x+(dt/2)*k1, u);
     k3 = dynamics(x+(dt/2)*k2, u);
@@ -76,13 +74,15 @@ for k = 0:K
     % Se guardan las trayectorias del estado y las entradas
     X(:,k+1) = x;
     U(:,k+1) = u;
+    
+    % Detener la simulaci贸n cuando se alcance el punto de inter茅s
+      if x(1) >= pi
+        break;
+      end
 end
-U(:,k-19) = 20;
-U(:,k-20) = 20;
-U(:,k-21) = 20;
 
-%% Generaci髇 de figuras (NO modificar)
-figure;
+%% Generaci贸n de figuras (NO modificar)
+figure(1);
 t = t0:dt:tf;
 subplot(2,1,1);
 plot(t, X', 'LineWidth', 1);
@@ -100,11 +100,11 @@ l = legend('$u_1(t)$', '$u_2(t)$', 'Location', 'southwest', ...
     'Orientation', 'horizontal');
 set(l, 'Interpreter', 'latex', 'FontSize', 12);
 
-%% Animaci髇 (NO modificar)
+%% Animaci贸n (NO modificar)
 % Posiciones de las masas
 p1 = @(q) ell*[sin(q(1)); -cos(q(1))]; 
 
-figure;
+figure(2);
 s = 3;
 r = 0.1;
 xlim(s*[-1, 1]);
@@ -117,7 +117,7 @@ r1 = p1(q); x1 = r1(1); y1 = r1(2);
 h = plot([0,x1], [0,y1], 'Color', [0.5, 0.5, 0.5], 'LineWidth', 3);
 c1 = circle(x1,y1,r);
 
-for k = 2:K+1
+for k = 2:k+1
     q = X(1,k);
     r1 = p1(q); x1 = r1(1); y1 = r1(2);
     h.XData = [0,x1];

@@ -5,5 +5,5 @@ sceneTreePerspectives: 000000ff000000010000000300000022000000c0000000fa010000000
 maximizedDockId: -1
 centralWidgetVisible: 1
 orthographicViewHeight: 1
-textFiles: 0 "controllers/ur5trajctrl/ur5trajctrl.m"
+textFiles: 0 "../../labora8/lab8wbt/controllers/ur5trajctrl/ur5trajctrl.m"
 consoles: Console:All:All
