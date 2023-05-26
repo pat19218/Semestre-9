@@ -61,7 +61,7 @@ kdP = 10;
 EP = 0;
 eP_1 = 0;
 
-eP=10
+eP=10;
 ell=DISTANCE_FROM_CENTER;
 xi = wb_gps_get_values(gps)';
 % Difeomorfismo para linealización por feedback
@@ -77,7 +77,7 @@ eO_1 = 0;
 % Acercamiento exponencial
 v0 = 400;
 alpha = 0.5;
-flag=2;
+flag=1;
 flag2=0;
 goal_index = 1;
 
@@ -96,47 +96,43 @@ Klqi = lqr(AA, BB, QQ, R);
 
 %%Trayectorias
 trayec=load('trayectorias.mat');
-trayectoria1=(trayec.trayectoria1-250)*10/500
+trayectoria1=(trayec.trayectoria2-250)*10/500;
 
 % ciclo principal de simulación:
-cont=1
+cont=1;
 if flag==0
       while wb_robot_step(TIME_STEP) ~= -1
-        xi = wb_gps_get_values(gps)';
-        xi(1:2)'
-        xi0 = wb_compass_get_values(compass);
-        x = xi(1); y = xi(2); theta = atan2(xi0(1), xi0(2));
-        % Se actualizan los tiempos actuales de simulación
-        i = i + 1;
-        t = t + TIME_STEP/1000;
-      
-    
+          xi = wb_gps_get_values(gps)';
+          xi(1:2)';
+          xi0 = wb_compass_get_values(compass);
+          x = xi(1); y = xi(2); theta = atan2(xi0(1), xi0(2));
           
-           
+          % Se actualizan los tiempos actuales de simulación
+          i = i + 1;
+          t = t + TIME_STEP/1000;
           e = [goal1(1) - x; goal1(2) - y];
           thetag = atan2(e(2), e(1));
-                    
+
           eP = norm(e);
           eO = thetag - theta;
           eO = atan2(sin(eO), cos(eO));
-                    
-           % %Control de velocidad lineal
-           kP = v0 * (1-exp(-alpha*eP^2)) / eP;
-           v = kP*eP;
-                    
-           % %Control de velocidad angular
-           eO_D = eO - eO_1;
-           EO = EO + eO;
-           w = kpO*eO + kiO*EO + kdO*eO_D;
-           eO_1 = eO;
-                  
-           % %Se combinan los controladores
-           u = [v; w];
+
+          % %Control de velocidad lineal
+          kP = v0 * (1-exp(-alpha*eP^2)) / eP;
+          v = kP*eP;
+          % %Control de velocidad angular
+          eO_D = eO - eO_1;
+          EO = EO + eO;
+          w = kpO*eO + kiO*EO + kdO*eO_D;
+          eO_1 = eO;
+
+          % %Se combinan los controladores
+          u = [v; w];
           left_wheel_speed = (v - w*DISTANCE_FROM_CENTER) / WHEEL_RADIUS;
           right_wheel_speed = (v + w*DISTANCE_FROM_CENTER) / WHEEL_RADIUS;
           wb_motor_set_velocity(left_wheel, left_wheel_speed);
           wb_motor_set_velocity(right_wheel, right_wheel_speed);
-          end
+       end
 elseif flag==2
     while wb_robot_step(TIME_STEP) ~= -1
         i = i + 1;
@@ -147,7 +143,7 @@ elseif flag==2
         e = [trayectoria1(cont,1) - x; trayectoria1(cont,2) - y];
         thetag = atan2(e(2), e(1));
 
-        eP = norm(e)
+        eP = norm(e);
         eO = thetag - theta;
         eO = atan2(sin(eO), cos(eO));
 
@@ -171,33 +167,31 @@ elseif flag==2
           cont=cont+1;
         end
 
-     end
- %Se guardan las trayectorias del estado y las entradas
- % %XI(:,n+1) = xi;
- % %U(:,n+1) = u;
+    end
+    
 elseif flag==1
   while wb_robot_step(TIME_STEP) ~= -1
-        i = i + 1;
-        t = t + TIME_STEP/1000;
-    xi = wb_gps_get_values(gps)';
-    xi0 = wb_compass_get_values(compass);
-    xi(3)=atan2(xi0(1), xi0(2));
+      i = i + 1;
+      t = t + TIME_STEP/1000;
+      xi = wb_gps_get_values(gps)';
+      xi0 = wb_compass_get_values(compass);
+      xi(3)=atan2(xi0(1), xi0(2));
 
-    %xi0 = wb_compass_get_values(compass);
-    x = xi(1:2);
-    sigma = sigma + (Cr*x - goal1)*(TIME_STEP/1000);
-    mu = -Klqi*[x; sigma];
-    u=finv(xi,mu);
-    if (xi(1)-goal1(1))<0.08 && (xi(2)-goal1(2))<0.08
-       left_wheel_speed = (u(1) - u(2)*DISTANCE_FROM_CENTER) / WHEEL_RADIUS
-       right_wheel_speed = (u(1) + u(2)*DISTANCE_FROM_CENTER) / WHEEL_RADIUS
-       wb_motor_set_velocity(left_wheel, 0);
-       wb_motor_set_velocity(right_wheel, 0);
-    else
-        left_wheel_speed = (u(1) - u(2)*DISTANCE_FROM_CENTER) / WHEEL_RADIUS
-       right_wheel_speed = (u(1) + u(2)*DISTANCE_FROM_CENTER) / WHEEL_RADIUS
-       wb_motor_set_velocity(left_wheel,  left_wheel_speed);
-       wb_motor_set_velocity(right_wheel,  right_wheel_speed);
+      %xi0 = wb_compass_get_values(compass);
+      x = xi(1:2);
+      sigma = sigma + (Cr*x - goal1)*(TIME_STEP/1000);
+      mu = -Klqi*[x; sigma];
+      u=finv(xi,mu);
+      if (xi(1)-goal1(1))<0.08 && (xi(2)-goal1(2))<0.08
+          left_wheel_speed = (u(1) - u(2)*DISTANCE_FROM_CENTER) / WHEEL_RADIUS;
+          right_wheel_speed = (u(1) + u(2)*DISTANCE_FROM_CENTER) / WHEEL_RADIUS;
+          wb_motor_set_velocity(left_wheel, 0);
+          wb_motor_set_velocity(right_wheel, 0);
+      else
+        left_wheel_speed = (u(1) - u(2)*DISTANCE_FROM_CENTER) / WHEEL_RADIUS;
+        right_wheel_speed = (u(1) + u(2)*DISTANCE_FROM_CENTER) / WHEEL_RADIUS;
+        wb_motor_set_velocity(left_wheel,  left_wheel_speed);
+        wb_motor_set_velocity(right_wheel,  right_wheel_speed);
      end
   end
 end

@@ -1,102 +1,77 @@
-%% Establezco la conexion
+%%
+%--------------------------------------------------------------------------
+%   PROYECTO 2
+%       Cris Pat        19218
+%       Oscar Fuentes   19816
+%--------------------------------------------------------------------------
 
-%Importante estar conectado a la red wifi 
-clear;clc;
-robotat = robotat_connect('192.168.50.200'); 
+%% obtencion de data
 
-%% Obtengo los datos de todos 
-q0 = zeros(1,6);
-robotat_mycobot_send_angles(robotat, 1, q0);
-
-GripPos = robotat_mycobot_get_coords(robotat,11);%ef final
-ObjPos = robotat_get_pose(robotat,13,'XYZ');    %esponja pos
-BasePos = robotat_get_pose(robotat,15,'XYZ');   %base mycobot
-
-%% Ajuste a mm
-
-CordGrip1 = GripPos(1:3)/1000;  %pasar de mm a metros, ya que la pos del 
-                                % griper se obtiene con getcords
-
-
-%transformación BTI*OTI = OTB (objeto respecto a la base)                                
-ObjPos1 = transl(BasePos(1:3))*[ObjPos(1:3)';1];
-ObjPos1 = ObjPos1(1:3)';
-
-%desfase de la esponja
-ObjPos2 = [ObjPos1(1)+0.1;ObjPos1(2)+0.1;ObjPos1(3)-0.1]; 
-
-ObjPos1(3) = ObjPos1(3);
-ObjPos1(2) = CordGrip1(2);
-ObjPos1(1) = ObjPos1(1); %posición intermedia
-
-%Interpolacion de la trayectoria
-tray1 = mtraj(@tpoly, ef_pos, posint1, 30);
-% tray2 = mtraj(@tpoly, posint1, lata_pos, 25);
-% tray3 = mtraj(@tpoly, lata_pos, posint2, 25);
-% tray4 = mtraj(@lspb, posint2, contendor_pos, 25);
-
-%tray = [tray1;tray2;tray3;tray4];
-mov = tray1;
-
-%Pose efector final objetivo
-qrob = zeros(1,6);
-
-%% trayectoria 1
-
-for i = 1:size(mov,1) %
-    dummy =[eye(3),mov(i,:)';zeros(1,3),1];
-    qrob(:,:,end+1) = robot_ikine(dummy,qrob(:,:,end)','pos');
-end
-
-qrob(:,:,end+1) = [qrob(:,1,end),qrob(:,2,end),qrob(:,3,end),qrob(:,4,end),deg2rad(135),deg2rad(-155)]; %Rotación del efector final
-qrob(:,:,end+1) = [qrob(:,1,end),qrob(:,2,end),qrob(:,3,end),qrob(:,4,end),deg2rad(135),deg2rad(-155)];
-
-%% trayectoria 2
-
-PosInt = robot_fkine(qrob(:,:,end)');
-ObjPosInt = PosInt(1:3,4);%obtener posición intermedia en  x y z
-
-mov2 = mtraj(@tpoly,ObjPosInt',ObjPos2',25); %de posicion intermedia a esponja
-
-mov = mov2;
-
-for i = 1:size(mov,1)
-    dummy =[eye(3),mov(i,:)';zeros(1,3),1];
-    qrob(:,:,end+1) = robot_ikine(dummy,qrob(:,:,end)','pos');
-end
-
-
-qrob = rad2deg(qrob); 
-qrob = max(-160,qrob);
-qrob = min(160,qrob);
-
-%% Envio de configuración y manipulación del objeto
-
-%robotat_mycobot_send_angles(robotat, 2, q0);
-k = 1;
-robotat_mycobot_set_gripper_state_open(robotat,2);
-robotat_mycobot_send_angles(robotat,2,[0;0;0;0;0;0]); %asegurar posición incial en 0
+robotat= robotat_connect('192.168.50.200');
 pause(1);
-while(k<size(qrob,3))
-    try
-        robotat_mycobot_send_angles(robotat,1,qrob(:,:,k)');
-        k=k+1;
-        pause(0.3);
-    catch
-        disp('Error envio de datos');
+
+objeto = robotat_get_pose(robotat,13,'eulzyx');
+base = robotat_get_pose(robotat,15,'eulzyx');
+canasta = robotat_get_pose(robotat,17,'eulzyx');
+
+%% Posicion inicial y variables
+
+flag = 0;
+contador = 1;
+time = 0;
+
+q0 = zeros(6, 1);
+
+robotat_mycobot_send_angles(robotat, 1, q0);
+pause(0.05);
+robotat_mycobot_set_gripper_state_open(robotat, 1);
+pause(0.05);
+
+%% positions
+
+K0 = robot_fkine(q0);
+[Q0, qist] = robot_ikine(K0, q0, 'full', 'transpose', 1000);
+Q0 = rad2deg(Q0);
+
+K2 = trans_hom(rotz(0)*roty(0)*rotx(0), [-0.1; 0; 0.4]);
+[Q2, qist] = robot_ikine(K2, Q0, 'full', 'transpose', 1000);
+Q2 = rad2deg(Q2);
+
+K3 = trans_hom(rotz(0)*roty(0)*rotx(0), [-0.1; 0; 0.4]);
+[Q3, qist] = robot_ikine(K3, Q2, 'full', 'transpose', 1000);
+Q3 = rad2deg(Q3);
+
+% qA = [q0,q1,q2,q3,q4,q5,q6];
+QA = [Q0, Q2];
+trayect = trapveltraj(QA,150);
+QA = trayect;
+
+QB = [Q2, Q3];
+trayect = trapveltraj(QB,100);
+QB = trayect;
+
+%% main
+
+while time <= 300;
+    if flag == 0
+        if contador <= width(QA)
+            robotat_mycobot_send_angles(robotat, 1, QA(:,contador))
+        else
+            robotat_mycobot_set_gripper_state_closed(robotat, 1);
+            flag = 1;
+            contador = 0;
+        end
+
+    else
+        if contador <= width(QB)
+            robotat_mycobot_send_angles(robotat, 1, QB(:,contador));
+        else
+            robotat_mycobot_set_gripper_state_open(robotat, 1);
+        end
+
     end
+
+    contador = contador + 1;
+    time = time +1;
+    pause(0.01);
 end
-
-robotat_mycobot_set_gripper_state_closed(robotat,2);
-robotat_mycobot_send_angles(robotat, 2, q0);
-
-%% Siempre desconectarse al finalizar pruebas
-
-robotat_disconnect(robotat)
-
-j = 0;
-i = 0;
-
-
-
-
