@@ -65,7 +65,8 @@ eP=10;
 ell=DISTANCE_FROM_CENTER;
 xi = wb_gps_get_values(gps)';
 % Difeomorfismo para linealización por feedback
-finv = @(xi,mu) [1,0; 0,1/(ell)] * [cos(xi(3)), -sin(xi(3)); sin(xi(3)), cos(xi(3))]' * [mu(1); mu(2)];
+finv = @(xi,mu) [1,0; 0,1/(ell)] * [cos(xi(3)), -sin(xi(3));...
+                sin(xi(3)), cos(xi(3))]' * [mu(1); mu(2)];
 
 % PID orientación
 kpO = 1;

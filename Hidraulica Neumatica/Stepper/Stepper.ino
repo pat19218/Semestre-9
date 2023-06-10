@@ -26,9 +26,9 @@ void setup() {
 }
 void loop() {
   //Activar una dirección y fijar la velocidad con stepDelay
-  digitalWrite(dirPin, HIGH);
-  digitalWrite(dirPin2, HIGH);
-  stepDelay = 10;
+  digitalWrite(dirPin, LOW);
+  digitalWrite(dirPin2, LOW);
+  stepDelay = 6;
   // Giramos 200 pulsos para hacer una vuelta completa
   for (int x = 0; x < 200; x++) {
     digitalWrite(stepPin, HIGH);

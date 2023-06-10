@@ -19,6 +19,12 @@ function [DH, IT_B, ET_F] = robot_def(q)
     % Transformaciones de base y herramienta
     %IT_B = [rotx(0)*roty(0)*rotz(0),[-0.2817;0.0408;0.1824];zeros(1,3),1];
     IT_B = eye(4);
+    
+    IT_B = [ -1, 0, 0, -0.4165; 
+             0, -1, 0, -0.0275; 
+             0,  0, 1, -61.14/1000;
+             0,  0, 0,  1.0 ];
+    
 %     ET_F = [ 1, 0, 0,             0; 
 %              0, 1, 0,             0; 
 %              0, 0, 1, 175/1000;
