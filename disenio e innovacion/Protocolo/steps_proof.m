@@ -1,3 +1,4 @@
+%% steps
 % 1. Preprocessing
 % Apply necessary preprocessing steps to EEG signal
 
@@ -16,7 +17,7 @@
 % 6. Post-processing and analysis
 % Analyze predicted labels to detect the exact time of activity
 
-% Example:
+%% Example:
 % Assuming you have a vector 'eegSignal' containing the EEG data and a trained model 'classifier'
 
 % Preprocess the signal (e.g., band-pass filter)
